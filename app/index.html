@@ -1,0 +1,87 @@
+<!doctype html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="ezadmin"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="ezadmin"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="ezadmin"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js" ng-app="ezadmin"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title ng-bind="pageInfo.title"></title>
+        <meta name="description" content="{{pageInfo.metaDesc}}">
+        <meta name="keywords" content="{{pageInfo.metaKeys}}">
+        <meta name="viewport" content="width=device-width">
+        <meta name="fragment" content="!" />
+
+        <base href="/">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+        <!-- build:css(.) styles/vendor.css -->
+        <!-- bower:css -->
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+    </head>
+    <body id="ngezapp" ng-controller="AppCtrl" ng-cloak>
+        <div loader class="appLoader" ng-show="appLoading"></div>
+        <div alerts></div>
+        <div browser></div>
+        <div id="content" ng-if="!appLoading" ui-view></div>
+
+        <!-- build:js(.) scripts/oldieshim.js -->
+        <!--[if lt IE 9]>
+        <script src="bower_components/es5-shim/es5-shim.js"></script>
+        <script src="bower_components/json3/lib/json3.js"></script>
+        <![endif]-->
+        <!-- endbuild -->
+
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+        <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+        <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
+        <script src="bower_components/ngstorage/ngStorage.js"></script>
+        <script src="bower_components/SHA-1/sha1.js"></script>
+        <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- Backand SDK for Angular -->
+        <script src="//cdn.backand.net/backand/dist/1.8.0/backand.min.js"></script>
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="app.js"></script>
+        <script src="config/interceptors/httpInterceptor.js"></script>
+        <script src="scripts/services/requests.js"></script>
+        <script src="scripts/services/states.js"></script>
+        <script src="scripts/factory/alert.js"></script>
+        <script src="scripts/factory/states.js"></script>
+        <script src="scripts/directives/mainDirectives.js"></script>
+        <script src="scripts/directives/subDirectives.js"></script>
+        <script src="scripts/filters.js"></script>
+        <script src="scripts/controllers/app.js"></script>
+        <script src="scripts/controllers/home.js"></script>
+        <script src="scripts/controllers/pages.js"></script>
+        <script src="scripts/controllers/blog.js"></script>
+        <script src="scripts/controllers/lndpages.js"></script>
+
+        <!-- endbuild -->
+
+    </body>
+</html>

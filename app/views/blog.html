@@ -1,0 +1,12 @@
+<div id="blog" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Blog</h1>
+            <div ng-repeat="post in vm.posts">
+                <h2>{{post.name}}</h2>
+                <p>{{post.publishDate | date: 'fullDate'}}</p>
+                <button type="button" class="btn btn-success btn-sm" ui-sref="post{{post.id}}{{language}}">Read More</button>
+            </div>
+        </div>
+    </div>
+</div>
