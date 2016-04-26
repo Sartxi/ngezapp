@@ -30,7 +30,11 @@
         <div loader class="appLoader" ng-show="appLoading"></div>
         <div alerts></div>
         <div browser></div>
-        <div id="content" ng-if="!appLoading" ui-view></div>
+
+        <div id="content" ng-if="!appLoading">
+            <div header></div>
+            <div ui-view class="content"></div>
+        </div>
 
         <!-- build:js(.) scripts/oldieshim.js -->
         <!--[if lt IE 9]>

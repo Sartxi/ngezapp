@@ -19,6 +19,10 @@
             $rootScope.language = 'en'; // set language with dropdown
         }
 
+        $rootScope.toggleLang = function () {
+
+        };
+
         init();
     }
 

@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('ezadmin')
-.directive('adminMenu', function () {
+.directive('header', function () {
     return {
         restrict: 'A',
         replace: true,
-        templateUrl: 'views/partials/menu.html'
+        templateUrl: 'views/partials/header.html'
     };
 })
 

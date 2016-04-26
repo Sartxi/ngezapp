@@ -21,6 +21,7 @@ angular.module('ezadmin', [
     function($stateProvider, $httpProvider, $urlRouterProvider, BackandProvider, $locationProvider) {
         BackandProvider.setAnonymousToken('ea0d2d74-72ae-4560-8b0f-241a783b313b');
         $httpProvider.interceptors.push('httpInterceptor');
+        $httpProvider.defaults.cache = true; //cache all requests
         $stateProviderRef = $stateProvider;
         $urlRouterProviderRef = $urlRouterProvider;
         $locationProvider.html5Mode(true);
@@ -82,6 +83,8 @@ angular.module('ezadmin', [
                 }
             });
 
+            // console.log($state.get());
+            
             $urlRouter.sync();
             $urlRouter.listen();
 

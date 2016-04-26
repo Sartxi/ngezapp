@@ -42,7 +42,6 @@
                                 pageId: post,
                                 language: obj.lng
                             }
-                            console.log(state);
                         }
                         if (lndpg) {
                             state.name = 'lnd' + lndpg + obj.lng;

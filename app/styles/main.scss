@@ -15,9 +15,9 @@
 
 // Variables
 $font: 'Open Sans', sans-serif;
-$solid: #666;
+$solid: #276dac;
 $accent: #8ec640;
-$dark: #23527c;
+$dark: #07375f;
 
 // Globals
 .accentText {color: $accent}
@@ -29,8 +29,42 @@ $dark: #23527c;
     font-size: 21px;
     padding: 20px;
 }
-body {font-family: $font;-webkit-backface-visibility: hidden;}
-header {background: $solid;}
+body {font-family: $font;-webkit-backface-visibility: hidden; background: #f9f9f9;}
+header {
+    background: white;
+    padding: 12px 0;
+    width: 100%;
+    display: block;
+    .logo {
+        max-width: 135px;
+        margin: 5px 0;
+        &:hover {max-width: 137px; position: absolute;}
+    }
+    ul.util {
+        li {
+            font-size: 12px;
+            a {
+                color: #999;
+                &:hover {text-decoration: none; color: $accent;}
+            }
+        }
+    }
+    ul.menu {
+        margin-top: 5px;
+        li {
+            font-size: 16px;
+            font-weight: 700;
+            padding-left: 20px;
+            a {
+                color: $solid;
+                &:hover {text-decoration: none; color: $accent;}
+            }
+        }
+    }
+}
+#content {
+    .content {padding-top: 50px;}
+}
 a, .pagination, .carousel, .panel-title a {cursor: pointer; color: $accent; &:hover {color: darken($accent, 20%);}}
 a:focus, button:focus {outline:0!important;}
 .sorter {cursor: pointer;}
