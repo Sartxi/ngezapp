@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ezadmin')
+angular.module('ezapp')
 .directive('pgListing', function () {
 	return {
 		restrict: 'EA',

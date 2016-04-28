@@ -6,14 +6,29 @@
 
         var self = this;
         var baseUrl = '/1/objects/';
+        var queryUrl = '/1/query/data/';
 
         self.name = null;
+
+        self.query = function (params) {
+            var defer = $q.defer();
+
+            $http.get(Backand.getApiUrl() + queryUrl + self.name, params)
+			.success(function (res) {
+				defer.resolve(res);
+			})
+			.error(function (err) {
+				defer.reject(err);
+			});
+
+			return defer.promise;
+        }
 
         self.getObjects = function () {
             var defer = $q.defer();
 
             $http.get(Backand.getApiUrl() + baseUrl + self.name, {
-                params: {deep: true}
+                params: {exclude: 'metadata,totalRows'}
             })
 			.success(function (res) {
 				defer.resolve(res);
@@ -29,7 +44,7 @@
             var defer = $q.defer();
 
             $http.get(Backand.getApiUrl() + baseUrl + self.name + '/' + id, {
-                params: {deep: true}
+                params: {deep: true, exclude: 'metadata,totalRows'}
             })
 			.success(function (res) {
 				defer.resolve(res);
@@ -82,6 +97,6 @@
 
     }
 
-    angular.module('ezadmin')
+    angular.module('ezapp')
         .service('request', ['$http', '$q', 'Backand', Request]);
 }());

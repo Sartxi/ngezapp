@@ -10,8 +10,9 @@
      */
 
 
-    function BlogCtrl(request) {
+    function BlogCtrl(request, $rootScope, PostFactory) {
         var self = this;
+        var language = $rootScope.stateInfo.language;
 
         function init() {
             getPosts();
@@ -20,13 +21,7 @@
         function getPosts() {
             request.name = 'blog';
             request.getObjects().then(function (res) {
-                var posts = [];
-                angular.forEach(res.data, function (post) {
-                    if (post.active) {
-                        posts.push(post);
-                    }
-                })
-                self.posts = posts;
+                self.posts = PostFactory.build(res.data, language);
             }, function (err) {
                 console.log(err);
             });
@@ -35,11 +30,11 @@
         init();
     }
 
-    function PostCtrl(request, $stateParams) {
+    function PostCtrl(request, $stateParams, $rootScope) {
         var self = this;
 
-        var pageId = $stateParams.pageId;
-        var language = $stateParams.language;
+        var pageId = $rootScope.stateInfo.pageId;
+        var language = $rootScope.stateInfo.language;
 
         function init() {
             getContent();
@@ -48,15 +43,11 @@
         function getContent() {
             request.name = 'blog';
             request.getObject(pageId).then(function (res) {
-                if (language) {
-                    if (language === 'en') {
-                        self.content = res.enContent[0];
-                    } else if (language === 'es') {
-                        self.content = res.esContent[0];
+                angular.forEach(res.content, function (obj) {
+                    if (obj.language === language) {
+                        self.content = obj;
                     }
-                } else {
-                    self.content = res.enContent;
-                }
+                });
             }, function (err) {
                 console.log(err);
             });
@@ -66,7 +57,7 @@
     }
 
 
-    angular.module('ezadmin')
-        .controller('BlogCtrl', ['request', BlogCtrl])
-        .controller('PostCtrl', ['request', '$stateParams', PostCtrl]);
+    angular.module('ezapp')
+        .controller('BlogCtrl', ['request', '$rootScope', 'PostFactory', BlogCtrl])
+        .controller('PostCtrl', ['request', '$stateParams', '$rootScope', PostCtrl]);
 })();

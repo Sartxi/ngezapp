@@ -8,17 +8,18 @@
 				<div class="row">
 					<div class="col-md-12 text-right">
 						<ul class="list-unstyled list-inline util">
-							<li><a ng-click="toggleLang()">Español</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
-							<li><a ui-sref="lnd19en">My Account</a></li>
+							<li><a ng-click="setlanguage()">{{staticContent.lolo}}</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+							<li><a ui-sref="home">{{staticContent.lolt}}</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+							<li>877-557-3769</li>
 						</ul>
 					</div>
 					<div class="col-md-12 text-right">
 						<ul class="list-unstyled list-inline menu">
-							<li><a ui-sref="lnd19en">Is Snap Right for Me?</a></li>
-							<li><a ui-sref="lnd19en">How it Works</a></li>
-							<li><a ui-sref="blog">Finance Tips</a></li>
-							<li><a ui-sref="lnd19en">Become a Merchant</a></li>
-							<li><a ui-sref="lnd19en">Apply Now</a></li>
+							<li><a ui-sref="lnd19{{stateInfo.language}}">{{staticContent.ltlo}}</a></li>
+							<li><a ui-sref="lnd17{{stateInfo.language}}">{{staticContent.ltlt}}</a></li>
+							<li><a ui-sref="blog">{{staticContent.ltlth}}</a></li>
+							<li><a ui-sref="lnd19{{stateInfo.language}}">{{staticContent.ltlf}}</a></li>
+							<li><a class="call" ui-sref="lnd17{{stateInfo.language}}">{{staticContent.ltlfi}}</a></li>
 						</ul>
 					</div>
 				</div>

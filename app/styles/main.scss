@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
 // Mixins
 @mixin rad ($rad) {
     border-radius: $rad;
@@ -43,6 +42,8 @@ header {
     ul.util {
         li {
             font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
             a {
                 color: #999;
                 &:hover {text-decoration: none; color: $accent;}
@@ -57,6 +58,7 @@ header {
             padding-left: 20px;
             a {
                 color: $solid;
+                &.call {color: $accent}
                 &:hover {text-decoration: none; color: $accent;}
             }
         }
@@ -95,12 +97,12 @@ a:focus, button:focus {outline:0!important;}
 .input-block {width: 100%!important;}
 .mainAlerts {
     position: fixed;
-    top: 15px;
-    right: 0;
-    max-width: 500px;
-    min-width: 300px;
+    top: 15%;
+    left: 40%;
+    margin-top: -50px;
+    margin-left: -50px;
     z-index: 999999999;
-    .alert-success, .alert-danger, .alert-info, .alert-warning {opacity: .8; border: 1px solid; border-right: 8px solid; padding: 12px 15px; @include rad(4px 0 0 4px);}
+    .alert-success, .alert-danger, .alert-info, .alert-warning {opacity: .9; font-size: 16px; padding: 25px 40px; @include rad(4px);}
 }
 
 // ... Bootstrap CSS Customizations

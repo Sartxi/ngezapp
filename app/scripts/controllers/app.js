@@ -10,22 +10,24 @@
      */
 
 
-    function AppCtrl($rootScope) {
-        var self = this;
+    function AppCtrl($scope, $log, LanguageService, $rootScope, $sessionStorage, $state) {
+        var scope = $scope;
+        var root = $rootScope;
 
         function init() {
-            self.snapApp = true;
-            $rootScope.snapApp = true;
-            $rootScope.language = 'en'; // set language with dropdown
+            root.staticContent = LanguageService.check();
         }
 
-        $rootScope.toggleLang = function () {
-
+        // Language
+        root.setlanguage = function () {
+            LanguageService.toggle();
+            root.staticContent = LanguageService.check();
+            LanguageService.content($state.current);
         };
 
         init();
     }
 
-    angular.module('ezadmin')
-        .controller('AppCtrl', ['$rootScope', AppCtrl]);
+    angular.module('ezapp')
+        .controller('AppCtrl', ['$scope', '$log', 'LanguageService', '$rootScope', '$sessionStorage', '$state', AppCtrl]);
 })();

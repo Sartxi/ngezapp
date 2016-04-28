@@ -12,23 +12,22 @@
 
     function HomeCtrl($rootScope, request, StateService) {
         var self = this;
-        var language = $rootScope.language;
+        var pageId = $rootScope.stateInfo.pageId;
+        var language = $rootScope.stateInfo.language;
 
         function init() {
             getContent();
         }
 
         function getContent() {
-            var pageId = StateService.getPageId();
             request.name = 'pages';
             request.getObject(pageId).then(function (res) {
-                if (language === 'en') {
-                    self.content = res.enContent[0];
-                    StateService.setMeta(res.enContent[0]);
-                } else if (language === 'es') {
-                    self.content = res.esContent[0];
-                    StateService.setMeta(res.esContent[0]);
-                }
+                angular.forEach(res.content, function (obj) {
+                    if (obj.language === language) {
+                        self.content = obj;
+                        StateService.setMeta(obj);
+                    }
+                });
             }, function (err) {
                 console.log(err);
             });
@@ -37,6 +36,6 @@
         init();
     }
 
-    angular.module('ezadmin')
+    angular.module('ezapp')
         .controller('HomeCtrl', ['$rootScope', 'request', 'StateService', HomeCtrl]);
 })();

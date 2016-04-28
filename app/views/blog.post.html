@@ -1,3 +1,4 @@
 <div id="blogPost{{vm.content.id}}" class="container" ng-controller="PostCtrl as vm">
+    <button class="btn btn-default btn-sm" type="button" ui-sref="blog"><span class="glyphicon glyphicon-chevron-left"></span> {{staticContent.backBtn}}</button>
     <div ng-bind-html="vm.content.pageHtml" class="row"></div>
 </div>

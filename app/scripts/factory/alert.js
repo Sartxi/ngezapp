@@ -57,6 +57,6 @@
 
     }
 
-    angular.module('ezadmin')
+    angular.module('ezapp')
         .factory('growl', ['$rootScope', '$timeout', GrowlFactory]);
 }());

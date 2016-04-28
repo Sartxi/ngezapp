@@ -2,47 +2,45 @@
 
 (function () {
 
-    function StateService(request, $q, $log, $state, $location, $rootScope) {
+    function StateService(request, $q, $log, $state, $location, $rootScope, $sessionStorage, LanguageService) {
 
         var self = this;
+
+        self.setMeta = function (data) {
+            $rootScope.pageInfo = {
+                title: data.title,
+                metaDesc: data.metaDescription,
+                metaKeys: data.metaKeywords
+            };
+        };
+
+        self.setParams = function (state) {
+            if (state.params.pageId) {
+                $rootScope.stateInfo = $state.params;
+                if ($sessionStorage.language && state.params.language !== $sessionStorage.language) {
+                    $sessionStorage.language = state.params.language;
+                    // $rootScope.lngTag = LanguageService.check();
+                }
+            } else {
+                $rootScope.stateInfo = {};
+                var pageId = self.getPageId();
+                $rootScope.stateInfo.pageId = pageId;
+                LanguageService.setLanguage();
+            }
+        };
 
         self.dynamic = function () {
             var defer = $q.defer();
 
-            var enStates = function () {
-                var q = $q.defer();
-                request.name = 'enContent';
-                request.getObjects().then(function (res) {
-                    angular.forEach(res.data, function (obj) {
-                        obj.lng = 'en';
-                    });
-                    q.resolve(res);
-                });
-                return q.promise;
-            };
-            var esStates = function () {
-                var q = $q.defer();
-                request.name = 'esContent';
-                request.getObjects().then(function (res) {
-                    angular.forEach(res.data, function (obj) {
-                        obj.lng = 'es';
-                    });
-                    q.resolve(res);
-                });
-                return q.promise;
-            };
-
-            $q.all([enStates(), esStates()]).then(function (res) {
-                var states = res[0].data.concat(res[1].data);
-                defer.resolve(states);
-            }, function (err) {
-                defer.reject(err);
+            request.name = 'states';
+            request.query().then(function (res) {
+                defer.resolve(res);
             });
 
 			return defer.promise;
         };
 
-        self.getPageId = function (url) {
+        self.getPageId = function () {
             var url = $location.url();
             var states = $state.get();
             var pageId;
@@ -54,18 +52,10 @@
             return pageId;
         };
 
-        self.setMeta = function (data) {
-            $rootScope.pageInfo = {
-                title: data.title,
-                metaDesc: data.metaDescription,
-                metaKeys: data.metaKeywords
-            };
-        };
-
         return self;
 
     }
 
-    angular.module('ezadmin')
-        .service('StateService', ['request', '$q', '$log', '$state', '$location', '$rootScope', StateService]);
+    angular.module('ezapp')
+        .service('StateService', ['request', '$q', '$log', '$state', '$location', '$rootScope', '$sessionStorage', 'LanguageService', StateService]);
 }());

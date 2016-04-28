@@ -3,7 +3,7 @@
 var $stateProviderRef;
 var $urlRouterProviderRef;
 
-angular.module('ezadmin', [
+angular.module('ezapp', [
     'appFilters',
     'ngResource',
     'ngSanitize',
@@ -19,7 +19,7 @@ angular.module('ezadmin', [
 ])
 .config(['$stateProvider','$httpProvider', '$urlRouterProvider', 'BackandProvider', '$locationProvider',
     function($stateProvider, $httpProvider, $urlRouterProvider, BackandProvider, $locationProvider) {
-        BackandProvider.setAnonymousToken('ea0d2d74-72ae-4560-8b0f-241a783b313b');
+        BackandProvider.setAnonymousToken('dbfb7726-053c-4ddc-a3fb-eeb3f1831c30');
         $httpProvider.interceptors.push('httpInterceptor');
         $httpProvider.defaults.cache = true; //cache all requests
         $stateProviderRef = $stateProvider;
@@ -27,14 +27,16 @@ angular.module('ezadmin', [
         $locationProvider.html5Mode(true);
     }
 ])
-.run(['$state', '$rootScope', '$location', '$anchorScroll', 'StateFactory', 'StateService', '$urlRouter',
-    function ($state, $rootScope, $location, $anchorScroll, StateFactory, StateService, $urlRouter) {
+
+.run(['$rootScope', '$anchorScroll', '$location', '$state', '$urlRouter', 'StateService', 'StateFactory', '$log',
+    function ($rootScope, $anchorScroll, $location, $state, $urlRouter, StateService, StateFactory, $log) {
 
         $rootScope.appLoading = true;
         var locationurl = $location.url();
 
         // Build application states
         StateService.dynamic().then(function (res) {
+            // $log.debug(res);
             var stateMatch;
 
             // Static States
@@ -83,8 +85,7 @@ angular.module('ezadmin', [
                 }
             });
 
-            // console.log($state.get());
-            
+            // $log.debug($state.get());
             $urlRouter.sync();
             $urlRouter.listen();
 
@@ -102,6 +103,7 @@ angular.module('ezadmin', [
                 }
             }
             $rootScope.appLoading = false;
+            $log.debug();
 
         }, function (err) {
             // do something when states service errors out
@@ -109,12 +111,8 @@ angular.module('ezadmin', [
         });
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState) {
-            var meta = {
-                title: toState.title,
-                metaDescription: toState.metaDescription,
-                metaKeywords: toState.metaKeywords
-            };
-            StateService.setMeta(meta);
+            StateService.setMeta(toState);
+            StateService.setParams($state);
             $anchorScroll();
         });
     }

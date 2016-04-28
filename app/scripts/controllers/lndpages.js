@@ -24,15 +24,11 @@
         function getContent() {
             request.name = 'lndPages';
             request.getObject(pageId).then(function (res) {
-                if (language) {
-                    if (language === 'en') {
-                        self.content = res.enContent[0];
-                    } else if (language === 'es') {
-                        self.content = res.esContent[0];
+                angular.forEach(res.content, function (obj) {
+                    if (obj.language === language) {
+                        self.content = obj;
                     }
-                } else {
-                    self.content = res.enContent;
-                }
+                });
             }, function (err) {
                 console.log(err);
             });
@@ -42,6 +38,6 @@
     }
 
 
-    angular.module('ezadmin')
+    angular.module('ezapp')
         .controller('LndPagesCtrl', ['$stateParams', 'request', LndPagesCtrl]);
 })();

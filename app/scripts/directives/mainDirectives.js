@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ezadmin')
+angular.module('ezapp')
 .directive('header', function () {
     return {
         restrict: 'A',
