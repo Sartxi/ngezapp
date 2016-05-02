@@ -1,12 +1,16 @@
-<header id="header">
+<header headmenu id="header" ng-class="{'fixmenu':pgScroll && !funsize, 'funsize':funsize}">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-2">
-				<a ui-sref="home"><img src="/assets/images/logo.png" alt="Snap Logo" class="logo"></a>
+			<div class="col-md-2 col-sm-3 col-xs-5">
+				<a ui-sref="home" class="logo"><img src="/assets/images/logo.png" alt="Snap Logo"></a>
 			</div>
-			<div class="col-md-10">
+			<div class="col-sm-9 col-xs-7 hamburger" ng-show="hamburgers">
+				<a ng-click="toggleMenu()" class="hamburgerTrain pull-right"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+				<a class="applynow pull-right">{{staticContent.ltlfi}}</a>
+			</div>
+			<div class="col-md-10" ng-hide="hamburgers">
 				<div class="row">
-					<div class="col-md-12 text-right">
+					<div class="col-md-12 text-right animate-show" ng-if="!pgScroll">
 						<ul class="list-unstyled list-inline util">
 							<li><a ng-click="setlanguage()">{{staticContent.lolo}}</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
 							<li><a ui-sref="home">{{staticContent.lolt}}</a>&nbsp;&nbsp;&nbsp;&nbsp;|</li>
@@ -24,6 +28,22 @@
 					</div>
 				</div>
 			</div>
+			<div pageslide ps-open="mobilemenu" ps-side="left" ps-size="100%">
+                <div id="mobileMenu">
+					<ul class="list-unstyled list-inline util">
+						<li><a ng-click="setlanguage()">{{staticContent.lolo}}</a></li>
+						<li><a ng-click="toggleMenu()" ui-sref="home">{{staticContent.lolt}}</a></li>
+						<li class="pull-right xout"><a ng-click="toggleMenu()"><span class="glyphicon glyphicon-remove"></span></a></li>
+					</ul>
+					<ul class="list-unstyled menu text-center">
+						<li><a ng-click="toggleMenu()" ui-sref="lnd19{{stateInfo.language}}">{{staticContent.ltlo}}</a></li>
+						<li><a ng-click="toggleMenu()" ui-sref="lnd17{{stateInfo.language}}">{{staticContent.ltlt}}</a></li>
+						<li><a ng-click="toggleMenu()" ui-sref="blog">{{staticContent.ltlth}}</a></li>
+						<li><a ng-click="toggleMenu()" ui-sref="lnd19{{stateInfo.language}}">{{staticContent.ltlf}}</a></li>
+						<li><a ng-click="toggleMenu()" class="call" ui-sref="lnd17{{stateInfo.language}}">{{staticContent.ltlfi}}</a></li>
+					</ul>
+                </div>
+            </div>
 		</div>
 	</div>
 </header>

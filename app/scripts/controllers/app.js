@@ -10,13 +10,42 @@
      */
 
 
-    function AppCtrl($scope, $log, LanguageService, $rootScope, $sessionStorage, $state) {
+    function AppCtrl($scope, $log, LanguageService, $rootScope, $state, $window) {
         var scope = $scope;
         var root = $rootScope;
 
         function init() {
             root.staticContent = LanguageService.check();
+            scope.mobilemenu = false;
         }
+
+        var w = angular.element($window);
+        $scope.$watch(function () {
+            return $window.innerWidth;
+        }, function (v) {
+            if (v <= 993) {
+                scope.hamburgers = true;
+            } else {
+                scope.hamburgers = false;
+            }
+            if (v <= 767) {
+                scope.funsize = true;
+            } else {
+                scope.funsize = false;
+            }
+            if (v <= 499) {
+                scope.micro = true;
+            } else {
+                scope.micro = false;
+            }
+        }, true);
+        w.bind('resize', function(){
+            scope.$apply();
+        });
+
+        scope.toggleMenu = function () {
+            scope.mobilemenu = !scope.mobilemenu;
+        };
 
         // Language
         root.setlanguage = function () {
@@ -29,5 +58,5 @@
     }
 
     angular.module('ezapp')
-        .controller('AppCtrl', ['$scope', '$log', 'LanguageService', '$rootScope', '$sessionStorage', '$state', AppCtrl]);
+        .controller('AppCtrl', ['$scope', '$log', 'LanguageService', '$rootScope', '$state', '$window', AppCtrl]);
 })();

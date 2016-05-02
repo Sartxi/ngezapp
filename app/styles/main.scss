@@ -1,42 +1,18 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-// Mixins
-@mixin rad ($rad) {
-    border-radius: $rad;
-    -webkit-border-radius: $rad;
-    -moz-border-radius: $rad;
-}
-@mixin bs ($bs) {
-    box-shadow: $bs;
-    -webkit-box-shadow: $bs;
-    -moz-box-shadow: $bs;
-}
-@mixin ts ($ts) {text-shadow: $ts;}
+@import 'strap';
 
-// Variables
-$font: 'Open Sans', sans-serif;
-$solid: #276dac;
-$accent: #8ec640;
-$dark: #07375f;
-
-// Globals
-.accentText {color: $accent}
-.solidText {color: $solid}
-.browsehappy {
-    position: fixed;
-    z-index: 9999;
-    width: 100%;
-    font-size: 21px;
-    padding: 20px;
-}
-body {font-family: $font;-webkit-backface-visibility: hidden; background: #f9f9f9;}
 header {
     background: white;
     padding: 12px 0;
     width: 100%;
     display: block;
-    .logo {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+    .logo img {
         max-width: 135px;
         margin: 5px 0;
+        @include trans(all 0.5s ease);
         &:hover {max-width: 137px; position: absolute;}
     }
     ul.util {
@@ -53,550 +29,432 @@ header {
     ul.menu {
         margin-top: 5px;
         li {
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 700;
-            padding-left: 20px;
+            padding-left: 10px;
             a {
                 color: $solid;
-                &.call {color: $accent}
+                &.call {
+                    color: $accent;
+                    border:1px solid $accent;
+                    padding: 5px 16px;
+                    @include rad(4px);
+                    &:hover {background: $accent; color: white;}
+                }
                 &:hover {text-decoration: none; color: $accent;}
             }
         }
-    }
-}
-#content {
-    .content {padding-top: 50px;}
-}
-a, .pagination, .carousel, .panel-title a {cursor: pointer; color: $accent; &:hover {color: darken($accent, 20%);}}
-a:focus, button:focus {outline:0!important;}
-.sorter {cursor: pointer;}
-.appLoader {
-    background: white;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 999;
-    .loading {
-        position: fixed;
-        top: 40%;
-        left: 50%;
-        margin-top: -50px;
-        margin-left: -50px;
-    }
-}
-.btn-primary {
-    background-color: $solid;
-    border-color: darken($solid, 5%);
-    &:hover {background-color: darken($solid, 10%);background-color: $solid;}
-}
-.btn-success { background-color:$accent;}
-.btn-success.active, .btn-success:active, .open>.dropdown-toggle.btn-success {background-color: darken($accent, 8%); border-color: darken($accent, 10%);}
-.btn-mega {padding: 10px 22px!important}
-.input-block {width: 100%!important;}
-.mainAlerts {
-    position: fixed;
-    top: 15%;
-    left: 40%;
-    margin-top: -50px;
-    margin-left: -50px;
-    z-index: 999999999;
-    .alert-success, .alert-danger, .alert-info, .alert-warning {opacity: .9; font-size: 16px; padding: 25px 40px; @include rad(4px);}
-}
-
-// ... Bootstrap CSS Customizations
-.btn, .well, .form-control { @include rad(2px);}
-.btn-default {background-color: #eee; border-color: #eee;}
-.badge {background-color:$solid;}
-.btn-panel {
-    background: white;
-    color: $accent;
-    padding: 26px;
-    font-size: 18px;
-    .emtAddBtnIcon {
-        display: block;
-        font-size: 80px;
-        margin-bottom: 10px;
-    }
-    &:hover {background: #eee}
-}
-.form-control {border:1px solid #ddd;}
-.panel-custom, .btn-panel {
-    border: 8px solid #eee;
-    @include rad(2px);
-    .panel-heading {
-        border-bottom: 2px solid $accent!important;
-        font-size: 16px;
-        .popover-content {color:#999;}
-        &.clickHeading {cursor: pointer}
-    }
-    ul.panelist {
-        margin-bottom: 0;
-        max-height: 200px;
-        overflow-y: scroll;
-        li {
-            padding: 5px 10px;
-            font-size: 14px;
-            border-bottom: 1px solid #eee;
-            &.active {
-                background:#eee;
-                a {
-                    color: $dark;
-                    .badge:hover {background: $solid}
-                    &:hover {color: $solid; text-decoration: none}
-                }
-            }
-            &:last-child { border:0;}
-            .defs {
-                color: $solid;
-                cursor: pointer;
-                &:hover {color: $dark;}
-            }
-            a {
-                color: $dark;
-                .badge:hover {background: $accent}
-                &:hover {color: $accent; text-decoration: none}
-            }
+        @include respond-to(large) {
+            li {font-size: 16px;}
         }
     }
-}
-.panel-questions {
-    background:#eee;
-    .panel-body {background:white;}
-    h3 {margin:10px;}
-}
-.alert {border:0;}
-.modal-backdrop {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1040;
-}
-.normalModal {
-    .modal-dialog {margin: 7% auto;}
-    .modal-sm {width: 365px;}
-    .modal-content {border: 12px solid rgba(255, 255, 255, 0.5); box-shadow: none}
-}
-.orgsLabel {margin: 0 2px 2px 0; a{color:white;}}
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus { background:$dark;}
-ul.nav li.dropdown:hover > ul.dropdown-menu {display: block;}
-.dropdown-menu {padding:5px;}
-.dropdown-menu > li > a:hover {background:$accent; color:white;}
-.ta-root.focussed > .ta-scroll-window.form-control, .form-control:focus {
-    @include bs(0 0 3px 1px rgba(142, 198, 64, .6));
-    border-color: $accent;
-}
-.pagination > li > a, .pagination > li > span {color: $accent}
-.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {background: $accent; border-color: darken($accent, 10%);}
-
-.avatar {
-    max-width: 70px;
-    margin-right: 10px;
-    border: 3px solid $accent;
-    cursor: pointer;
-    &:hover {border: 4px solid $accent;}
-}
-
-.uib-datepicker-popup, .uib-datepicker {
-    width: 100%;
-    height: 100%;
-}
-.uib-daypicker, .uib-monthpicker, .uib-yearpicker {width: 100%;}
-.uib-day button, .uib-month button, .uib-year button {background-color: white;}
-.uib-day button, .uib-month button, .uib-year button, .uib-daypicker .btn, .uib-monthpicker .btn, .uib-yearpicker .btn, .uib-datepicker-popup li .uib-datepicker .uib-daypicker:focus {outline: 0!important; border: 0!important;}
-.uib-daypicker .text-info {color: $accent;}
-.uib-daypicker .btn-info {background: $accent;}
-
-// ... animation
-.animate-show {
-  line-height: 20px;
-  opacity: 1;
-}
-.animate-show.ng-hide-remove {
-  transition: all linear 0.5s;
-}
-.animate-show.ng-hide {
-  opacity: 0;
-  padding: 0 10px;
-}
-
-//login Specific
-#login {
-    position: relative;
-    z-index: 9;
-    .loginContent {
-        z-index: 9;
-        position: relative;
-        .loginLogo {max-width: 150px; margin: 0 auto;}
-        .login-panel {position: absolute; top: 60px; width: 100%; padding: 15px 30px;}
+    .hamburger {
+        .hamburgerTrain {color: $solid; font-size: 43px; padding: 6px 9px 0; display: inline-block;}
+        .applynow {display: inline-block; font-size: 23px; padding: 17px 14px 0 0;}
     }
-    .loginBackDrop {
-        background: $solid url('../assets/images/logintexture.png');
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 2;
-    }
-}
-
-// ... Admin Specific
-#admin {
-    margin-bottom: 400px;
-    #menu {
-        width: 100px;
-        height: 100%;
-        position: fixed;
-        background:url('../assets/images/adminMenu.png');
-        border: 0;
-        border-right: 2px solid #222;
-        .menuToggle {
-            position: absolute;
-            bottom: 2px;
-            left: 10px;
-            color: white;
-            cursor: pointer;
-            font-size: 25px;
-            &:hover {color: $accent;}
-        }
-        &.ls {
-            width: 50px;
-            ul.menuItems li a {
-                .menuItemText {display: none;}
-                .glyphicon {font-size: 22px!important;}
-                .fa {font-size: 26px!important;}
-            }
-        }
-        &.adminMenu {
-            z-index: 6;
-            ul.menuItems {
-                li {text-align: center;
-                    a {
-                        display: block;
-                        width: 100%;
-                        padding: 15px 0;
-                        border-bottom: 1px solid #222;
-                        color: white;
-                        .glyphicon {font-size: 33px;}
-                        .fa {font-size: 37px;}
-                        &.active {background: #222; border-right: 5px solid $accent; text-decoration: none;}
-                        &:hover {color: white; cursor: pointer; background: #222; text-decoration: none}
-                    }
-                }
-            }
-        }
-    }
-    #content {
-        margin-left: 110px;
-        display: block;
-        &.ls {
-            margin-left: 57px;
-            ul.menuItems li a .menuItemText {display: none;}
-        }
-    }
-    #userInfo {
-        position: relative;
-        .userLogo {position: fixed; right: 20px; top: 20px; max-width: 100px; z-index: 6; background: white; @include rad(8px); padding: 5px;}
-    }
-    .loading {
-        position:absolute;
-        color: $accent;
+    &.funsize {
         background: white;
-        right: 0;
-        left: 0;
-        z-index: 9999;
-        height: 100%;
-        .uil-hourglass {
-            max-width: 80px;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-        }
-    }
-    .form-group {
-        label small {color: #999; font-weight: 400}
-    }
-    .upBtn {
-        position: fixed;
-        bottom: 10px;
-        left: 113px;
-        z-index: 999;
-        font-size: 24px;
-        padding: 5px 12px 8px 15px;
-        color: white;
-        background-color: rgba(225, 225, 225, .8);
-        &:focus {border: 0; outline: 0;}
-    }
-    .staticDatePicker {
+        height: 75px;
         position: relative;
-        .popover {
-            position: absolute;
-            display: block;
+        .logo img {
+            max-width: 95px;
+            @include trans(all 0.5s ease);
+            &:hover {max-width: 100px;}
+        }
+        .hamburger {
+            .hamburgerTrain {font-size: 32px;}
+            .applynow {font-size: 18px;  padding: 14px 14px 0 0;}
         }
     }
-    .editMode p {color: #999;}
-    .editingTable {
-        font-size: 16px;
-        margin-top: 20px;
-        .editingRow {
-            padding: 15px 15px 0;
-            border-bottom: 1px solid #ccc;
-            p {margin-bottom: 15px}
-            .glyphicon {margin-right: 10px;}
-            .action.glyphicon {margin-right: 0;}
-            .editArea {
-                background: #eee;
-                padding: 30px 32px;
-                border-top: 1px solid silver;
-            }
+    &.fixmenu {
+        background: white;
+        height: 80px;
+        .logo img {
+            max-width: 105px;
+            @include trans(all 0.5s ease);
+            &:hover {max-width: 109px;}
         }
-        .tableHead {
+        ul.util {
+            @include trans(all 0.5s ease);
+        }
+        ul.menu {
+            margin-top: 16px;
+            @include trans(all 0.5s ease);
+        }
+        .hamburger {
+            .hamburgerTrain {font-size: 35px;}
+            .applynow {font-size: 18px;}
+        }
+    }
+}
+#mobileMenu {
+    a {color:white; text-transform: uppercase;}
+    .util {
+        color: white;
+        font-size: 12px;
+        margin: 24px 10px 27px 10px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 23px;
+        .xout {font-size: 17px; margin-right: 8px; a {color: $accent}}
+    }
+    .menu {
+        font-size: 20px;
+        margin: 24px 10px 27px 10px;
+        font-weight: 100!important;
+        li {border-bottom:1px solid #333; padding: 18px 0;}
+    }
+}
+.ng-pageslide {
+    background: rgba(0, 0, 0, .9);
+}
+
+#content {
+    .content {padding-top: 93px;}
+    #homePage {
+        .hero {
             display: block;
             width: 100%;
-            background: $solid;
-            position: relative;
             overflow: hidden;
-            color: white;
-            padding: 10px 0;
-            @include rad(2px);
-        }
-        tags-input {
-            .host {margin: 0;}
-            .tags {
-                display: block;
+            position: relative;
+            .heroImg {
+                position: fixed;
                 width: 100%;
-                min-height: 34px;
-                padding: 3px 2px;
-                font-size: 14px;
-                line-height: 1.428571429;
-                color: #555555;
-                background-color: #fff;
-                background-image: none;
-                border: 1px solid #ccc;
-                @include rad(2px);
-                @include bs(inset 0 1px 1px rgba(0, 0, 0, 0.075));
-                transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-                &.focused {@include bs(0 0 3px 1px rgba(142, 198, 64, .6)); border-color: $accent;}
-                .input {margin: 0;}
-                .tag-item {
-                    height: 22px;
-                    line-height: 22px;
-                    margin: 2px;
-                    padding: 0 8px;
-                    background: darken(#eee, 10%);
-                    border:0;
-                    color: #222;
-                    &.selected {
-                        background: #d43f3a;
-                        border:0;
-                        color: white;
-                        .remove-button {color: white;}
+                max-width: 1495px;
+                top: 75px;
+            }
+            @include respond-to(fullwidth) {
+                .heroImg {
+                    left: 50%;
+                    margin-left: -747px;
+                    width: 100%;
+                    right: 0;
+                }
+            }
+            @include respond-to(large) {
+                .heroImg {
+                    width: 110%!important;
+                    right: 0!important;
+                }
+            }
+            @include respond-to(medium) {
+                .heroImg {
+                    width: 129%;
+                    right: -9%;
+                }
+            }
+            @include respond-to(small) {
+                .heroImg {
+                    width: 129%;
+                    right: -9%;
+                }
+            }
+            .heroImgfunsize {position: absolute; width: 180%; top: 0; left: -294px;}
+            .heroImgmicro {position: absolute; width: 100%; top: 0;}
+            .mainCTA {
+                color: white;
+                padding: 103px 0 221px;
+                .herocopy {font-weight: 800;}
+                .up {color: $accent;}
+                .upup {color: $accent;}
+                .details {padding: 9px 11px; display: block;}
+                &.spanish {
+                    @include respond-to(xsmall) {
+                        .u {font-size: 50px; line-height: 37px;}
+                        .up {font-size: 52px; line-height: 61px;}
+                        .upup {font-size: 61px; line-height: 54px;}
+                        .details {font-size: 14px; font-weight: 100;}
                     }
-                    .remove-button {color: #222;}
+                    @include respond-to(small) {
+                        .u {font-size: 52px; line-height: 50px;}
+                        .up {font-size: 58px; line-height: 67px;}
+                        .upup {font-size: 73px; line-height: 52px;}
+                        .details {font-size: 12px; padding: 9px 0;}
+                    }
+                    @include respond-to(medium) {
+                        .u {font-size: 60px; line-height: 74px;}
+                        .up {font-size: 61px; line-height: 77px;}
+                        .upup {font-size: 75px; line-height: 75px;}
+                        .details {font-size: 12px; padding: 9px 0;}
+                    }
+                    @include respond-to(large) {
+                        .u {font-size: 80px; line-height: 74px;}
+                        .up {font-size: 82px; line-height: 98px;}
+                        .upup {font-size: 93px; line-height: 72px;}
+                        .details {font-size: 14px; font-weight: 100;}
+                    }
                 }
             }
-            .autocomplete {
-                font-size: 13px;
-                @include rad(5px);
-                @include bs(0 0 3px 1px rgba(0, 0, 0, .3));
-                border-color: #eee;
-                .suggestion-item {
-                    font-size: 13px;
+            @include respond-to(xsmall) {
+                .mainCTA {
+                    padding: 135px 0 99px;
+                    .u {font-size: 50px; line-height: 36px;}
+                    .up {font-size: 57px; line-height: 53px;}
+                    .upup {font-size: 80px; line-height: 64px;}
+                    .details {font-size: 12px; font-weight: 100;}
+                    .mainCTAbtn {padding: 10px 20px; font-size: 13px;}
                 }
-                .suggestion-item.selected, .suggestion-item.selected em {
-                    background-color: $solid;
+            }
+            @include respond-to(small) {
+                .mainCTA {
+                    padding: 78px 0 172px;
+                    .u {font-size: 54px; line-height: 40px;}
+                    .up {font-size: 62px; line-height: 56px;}
+                    .upup {font-size: 86px; line-height: 71px;}
+                    .details {font-size: 13px; font-weight: 100;}
+                }
+            }
+            @include respond-to(medium) {
+                .mainCTA {
+                    padding: 103px 0 221px;
+                    .u {font-size: 62px; line-height: 60px;}
+                    .up {font-size: 71px; line-height: 61px;}
+                    .upup {font-size: 98px; line-height: 89px;}
+                    .details {font-size: 14px; font-weight: 100;}
+                }
+            }
+            @include respond-to(large) {
+                .mainCTA {
+                    .u {font-size: 80px; line-height: 74px;}
+                    .up {font-size: 92px; line-height: 77px;}
+                    .upup {font-size: 128px; line-height: 101px;}
+                    .details {font-size: 18px; font-weight: 100;}
+                    .mainCTAbtn {font-size: 18px;}
+                }
+            }
+            .stepsArrow1 {
+                position: absolute;
+                z-index: 2;
+                left: 85%;
+                top: -20%;
+            }
+            .stepsArrow2 {
+                position: absolute;
+                z-index: 1;
+                left: 85%;
+                top: -20%;
+            }
+            @include respond-to(small) {
+                .stepsArrow1, .stepsArrow2 {
+                    width: 73px;
+                    top: -33px;
+                }
+            };
+            .heroSteps {
+                background: white;
+                width: 100%;
+                display: block;
+                position: relative;
+                .steps {height: 258px;}
+                @include respond-to(small) {
+                    .steps {height: 167px;}
+                };
+                .heroStep {
+                    background: url('../assets/images/stepsBg.png') center no-repeat;
+                    background-size: 84%;
+                    position: relative;
+                    bottom: 166px;
+                    padding: 73px 73px;
+                    img {margin: 0 auto; position: relative; top: -10px;}
+                    .stepsTitle {font-size: 16px;}
+                    .stepsText {color: #999999;}
+                    &.ind {z-index: 2}
+                    &.ind2 {z-index: 1}
+                }
+                @include respond-to(xsmall) {
+                    .heroStep {
+                        bottom: 70px;
+                        background-size: 78%;
+                        width: 333px;
+                        margin: 0 auto;
+                        padding: 50px 73px;
+                    }
+                    .steps {height: 299px;}
+                }
+                @include respond-to(small) {
+                    .heroStep {
+                        padding: 73px 18px;
+                        background-size: 97%;
+                        bottom: 134px;
+                        img {width: 35%;}
+                    }
+                }
+                @include respond-to(medium) {
+                    .heroStep {background-size: 96%; padding: 73px 50px;}
+                }
+                @include respond-to(large) {
+                    .heroStep {padding: 73px 73px; background-size: 84%;}
                 }
             }
         }
-        .wysyEdit .btn-group {
-            margin-bottom: 10px;
-            .btn {font-size: 11px;}
-        }
-    }
-    .subPage {
-        background: #f7f7f7;
-        padding: 10px 10px 0!important;
-        p {margin-bottom: 10px!important;}
-        .subPageIcon {color: darken(#ddd, 10%); margin-right: 10px;}
-    }
-    .moduleLabels {font-size: 16px; margin-left: 20px;}
-    .testEditArea {
-        background: #eee;
-        padding-top: 26px;
-        margin-top: 13px;
-        margin-bottom: -10px;
-        padding-bottom: 19px;
-        border-top: 1px solid silver;
-    }
-    #view-selector-container {
-        table {margin-bottom: 10px}
-        .dcs-a-dcs-fc-dcs-fb-dcs-cb {width: 100%}
-    }
-    .submitBtn {
-        position: absolute;
-        top: -86px;
-        right: 10px;
-    }
-}
-#imageGallery {
-    background: #f7f7f7;
-    .imageGallery {
-        display: block;
-        overflow: hidden;
-        margin-left: 0;
-        margin-right: 0;
-        .imageItem {
-            margin-top: 11px;
-            .imgBtn {cursor: pointer; &:hover {border: 8px solid #ddd;}}
-        }
-    }
-    .galleryImg {
-        margin: 10px auto;
-        display: block;
-        &.sml {max-height: 85px;}
-        &.mdm {max-height: 100px;}
-        &.lrg {max-height: 400px;}
-    }
-    .addImager {
-        .glyphicon {font-size: 33px}
-    }
-    .dropBox {
-        border: 5px dashed darken(#eee, 5%);
-        color: darken(#eee, 10%);
-        padding: 50px 0;
-        text-align: center;
-        font-size: 23px;
-        margin-top: 17px;
-    }
-    .dragover {border: 5px dashed $accent; color: $accent;}
-    .imgPreview {
-        margin-top: 10px;
-        padding: 20px 0;
-        img {margin: 0 auto;}
-    }
-}
-.bck {@include rad(43px); padding: 3px 6px;}
-#layoutGallery {
-    .layoutSelector {
-        height: 150px;
-        margin: 0 auto;
-        display: block;
-        cursor: pointer;
-        border: 2px solid white;
-        @include rad(25px);
-        &:hover {border: 2px solid $accent;}
-    }
-}
-.lngTabs {margin-bottom: 30px;}
-.blogLngPills {
-    font-size: 11px;
-    border-bottom: 1px solid #eee;
-    li > a {padding: 5px; @include rad(0);}
-    li.active > a, li.active > a:hover, li.active > a:focus {
-        background: $accent;
-    }
-}
-
-//checkmark animation
-.savedsvg {
-    width: 100px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    text-align: center;
-    color: $accent;
-    background: white;
-    border: 1px solid #f7f7f7;
-    padding: 10px 15px;
-    @include rad(10px);
-    .checkmark {
-        stroke: $accent;
-        stroke-dashoffset: 745.74853515625;
-        stroke-dasharray: 745.74853515625;
-        animation: dash 2s ease-out forwards infinite;
-    }
-}
-
-@keyframes dash {
-    0% {
-        stroke-dashoffset: 745.74853515625;
-    }
-    100% {
-        stroke-dashoffset: 0;
-    }
-}
-
-// ... Admin Break Points
-@media (max-width: 1400px) {
-
-}
-@media (max-width: 1252px) {
-    #admin #userInfo .userLogo {position: absolute; max-width: 80px;}
-}
-@media (max-width: 800px) {
-    .pageCol {padding-left: 0; padding-right: 0;}
-    #admin {
-        #menu {
-            position: static;
-            width: 100%;
+        .information {
+            background: white;
+            position: relative;
             display: block;
-            float: left;
-            border: 0;
-            border-bottom: 2px solid #222;
-            .menuToggle {display: none;}
-            &.adminMenu {
-                ul.menuItems {
-                    margin-bottom: 0;
-                    li {
-                        display: inline;
-                        float: left;
-                        border-right: 1px solid #222;
-                        a {
-                            border: 0;
-                            border-bottom: 5px solid #999;
-                            padding: 10px 13px 6px;
-                            .glyphicon {font-size: 22px;}
-                            .fa {font-size: 26px!important;}
-                            .menuItemText {display: none;}
-                            &.active {border:0; border-bottom: 5px solid $accent;}
+            width: 100%;
+            padding-bottom: 100px;
+            .infoSection {
+                .infoText {padding: 20px 50px;}
+                @include respond-to(medium) {
+                    .lgright {float:right;}
+                    .infoText {padding: 20px 0;}
+                }
+                @include respond-to(large) {
+                    .lgright {float:right;}
+                    .infoText {padding: 20px 0;}
+                }
+                p {color:#999;}
+                img {
+                    width: 78%;
+                    max-width: 356px;
+                    margin: 0 auto;
+                }
+            }
+        }
+        .testimonials {
+            display: block;
+            width: 100%;
+            position: relative;
+            color: white;
+            .testimones {
+                @include trans(all 0.5s ease);
+            }
+            .testBg {
+                position: relative;
+                margin: 0 auto;
+                width: 100%;
+                max-width: 1496px;
+            }
+            .testQuote {
+                position: absolute;
+            	left: 0;
+            	right: 0;
+            	margin-left: auto;
+             	margin-right: auto;
+            	max-width: 1096px;
+                .testBody {
+                    font-weight: 300;
+                    display: block;
+                }
+                .testAuthor {
+                    margin-bottom: 20px;
+                    display: block;
+                }
+                .vidLink {
+                    font-size: 65px;
+                    color: white;
+                    &:hover {color: $accent;}
+                }
+            }
+            @include respond-to(xsmall) {
+                .testBg {width: 250%; left: -225px;}
+                .testQuote {
+                    top: 10%;
+                    .testBody {font-size: 17px; padding: 0 60px;}
+                    .vidLink {font-size: 53px;}
+                }
+            }
+            @include respond-to(small) {
+                .testBg {width: 146%; left: -12%;}
+                .testQuote {
+                    top: 21%;
+                    .testBody {font-size: 17px; padding: 0 60px;}
+                }
+            }
+            @include respond-to(medium) {
+                .testBg {width: 250%; left: -185px;}
+                .testQuote {
+                    top: 21%;
+                    .testBody {font-size: 27px;}
+                }
+            }
+            @include respond-to(large) {
+                .testBg {width: 100%; left: 0;}
+                .testQuote {
+                    top: 21%;
+                    .testBody {font-size: 27px;}
+                }
+            }
+            .testCTA {
+                background: white;
+                position: relative;
+                width: 100%;
+                color: #999;
+                padding: 80px 0;
+                .testAvatars {
+                    position: absolute;
+                    width: 100%;
+                    max-width: 500px;
+                    top: -53px;
+                    left: 0;
+                    right: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    text-align: center;
+                    @include trans(all 0.5s ease);
+                    .imgoverlay {
+                        .overlay {
+                            background: rgba(255, 255, 255, 0.3);
+                            position: absolute;
+                            top: 2px;
+                            left: 7px;
+                            width: 86%;
+                            height: 95%;
+                            cursor: pointer;
+                            @include rad(34px);
+                        }
+                    }
+                    .avatars {position: relative;}
+                    .avatar {
+                        width: 80px;
+                        cursor: pointer;
+                        &.active {width: 100px;}
+                    }
+                    @include respond-to(xsmall) {
+                        .avatar {
+                            width: 60px;
+                            &.active {width: 80px;}
+                        }
+                        .imgoverlay {
+                            .overlay {
+                                top: 1px;
+                                left: 7px;
+                                width: 82%;
+                                height: 95%;
+                                @include rad(26px);
+                            }
                         }
                     }
                 }
+                @include respond-to(xsmall) {
+                    .testAvatars {top: -40px;}
+                }
             }
-            &.ls {width: 100%;}
         }
-        #content {
-            margin-left: 0;
-            display: block;
-            float: left;
+        .locationFinder {
             width: 100%;
-            &.ls {
-                margin-left: 0;
-                display: block;
-                float: left;
-                width: 100%;
+            max-width: 1496px;
+            margin: 0 auto;
+            display: block;
+            position: relative;
+            color: white;
+            background: white url('../assets/images/finderBackground.jpg') center no-repeat;
+            background-size: 100%;
+            .finderContainer {
+                padding: 115px 40px;
+                .hspace {margin-bottom: 40px;}
             }
         }
-        #userInfo {
-            position: relative;
-            .userLogo {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                max-width: 75px;
-                @include bs(-2px 2px 5px 0px rgba(0,0,0,0.44));
-            }
+        @include respond-to(xsmall) {
+            .locationFinder {background-size: 312%;}
         }
     }
-}
-@media (max-width: 700px) {
-
+    #footer {
+        background: white;
+        width: 100%;
+        display: block;
+        position: relative;
+        padding: 20px 0;
+        color: #999;
+        font-size: 13px;
+    }
 }

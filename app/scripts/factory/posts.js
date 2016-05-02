@@ -14,9 +14,9 @@
                     var newPost = post;
                     PostService.allPostData(post.id, lng).then(function (res) {
                         var html = res[0], cats = res[1], tags = res[2];
-                        newPost.pageHtml = html[0].pageHtml;
-                        newPost.catagories = cats;
-                        newPost.tags = tags;
+                        if (html[0]) {newPost.pageHtml = html[0].pageHtml;}
+                        if (cats) {newPost.catagories = cats;}
+                        if (tags) {newPost.tags = tags;}
                     });
                     newPosts.push(newPost);
                 });

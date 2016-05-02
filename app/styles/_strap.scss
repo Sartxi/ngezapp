@@ -1,0 +1,242 @@
+$brand-primary: #003567;
+
+// Mixins
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == "xsmall" {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+    @else if $breakpoint == "small" {
+        @media (min-width: 767px) and (max-width: 991px) {
+            @content;
+        }
+    }
+    @else if $breakpoint == "medium" {
+        @media (min-width: 992px) {
+            @content;
+        }
+    }
+    @else if $breakpoint == "large" {
+        @media (min-width: 1200px) {
+            @content;
+        }
+    }
+    @else if $breakpoint == "fullwidth" {
+        @media (min-width: 1446px) {
+            @content;
+        }
+    }
+}
+
+@mixin rad ($rad) {
+    border-radius: $rad;
+    -webkit-border-radius: $rad;
+    -moz-border-radius: $rad;
+}
+@mixin bs ($bs) {
+    box-shadow: $bs;
+    -webkit-box-shadow: $bs;
+    -moz-box-shadow: $bs;
+}
+@mixin ts ($ts) {text-shadow: $ts;}
+
+@mixin trans ($ts) {
+    -webkit-transition: $ts;
+    -moz-transition: $ts;
+    -ms-transition: $ts;
+    -o-transition: $ts;
+    transition: $ts;
+}
+
+// Variables
+$font: 'Open Sans', sans-serif;
+$solid: #276dac;
+$accent: #8ec640;
+$dark: #003567;
+
+// Globals
+.accentText {color: $accent}
+.solidText {color: $solid}
+
+html {overflow-x: hidden;}
+body {font-family: $font;-webkit-backface-visibility: hidden; background: #f9f9f9;}
+
+a, .pagination, .carousel, .panel-title a {cursor: pointer; color: $accent; &:hover {color: darken($accent, 20%);}}
+a:focus, button:focus {outline:0!important;}
+
+// ... Bootstrap CSS Customizations
+.btn, .well, .form-control { @include rad(2px);}
+.btn-default {background-color: #eee; border-color: #eee;}
+.btn-primary {
+    background-color: $dark;
+    border-color: $dark;
+    &:hover {background-color: lighten($dark, 5%); border-color: $dark;}
+}
+.btn-success { background-color:$accent; border: 0; padding: 13px 49px;}
+.btn-success.active, .btn-success:active, .open>.dropdown-toggle.btn-success {background-color: darken($accent, 8%); border-color: darken($accent, 10%);}
+.btn-mega {padding: 10px 22px!important}
+.badge {background-color:$solid;}
+.btn-panel {
+    background: white;
+    color: $accent;
+    padding: 26px;
+    font-size: 18px;
+    .emtAddBtnIcon {
+        display: block;
+        font-size: 80px;
+        margin-bottom: 10px;
+    }
+    &:hover {background: #eee}
+}
+.form-control {border:1px solid #ddd;}
+.panel-custom, .btn-panel {
+    border: 8px solid #eee;
+    @include rad(2px);
+    .panel-heading {
+        border-bottom: 2px solid $accent!important;
+        font-size: 16px;
+        .popover-content {color:#999;}
+        &.clickHeading {cursor: pointer}
+    }
+    ul.panelist {
+        margin-bottom: 0;
+        max-height: 200px;
+        overflow-y: scroll;
+        li {
+            padding: 5px 10px;
+            font-size: 14px;
+            border-bottom: 1px solid #eee;
+            &.active {
+                background:#eee;
+                a {
+                    color: $dark;
+                    .badge:hover {background: $solid}
+                    &:hover {color: $solid; text-decoration: none}
+                }
+            }
+            &:last-child { border:0;}
+            .defs {
+                color: $solid;
+                cursor: pointer;
+                &:hover {color: $dark;}
+            }
+            a {
+                color: $dark;
+                .badge:hover {background: $accent}
+                &:hover {color: $accent; text-decoration: none}
+            }
+        }
+    }
+}
+.panel-questions {
+    background:#eee;
+    .panel-body {background:white;}
+    h3 {margin:10px;}
+}
+.alert {border:0;}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+}
+.normalModal {
+    .modal-dialog {margin: 7% auto;}
+    .modal-sm {width: 365px;}
+    .modal-content {border: 12px solid rgba(255, 255, 255, 0.5); box-shadow: none}
+}
+.orgsLabel {margin: 0 2px 2px 0; a{color:white;}}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus { background:$dark;}
+ul.nav li.dropdown:hover > ul.dropdown-menu {display: block;}
+.dropdown-menu {padding:5px;}
+.dropdown-menu > li > a:hover {background:$accent; color:white;}
+.ta-root.focussed > .ta-scroll-window.form-control, .form-control:focus {
+    @include bs(0 0 3px 1px rgba(142, 198, 64, .6));
+    border-color: $accent;
+}
+.pagination > li > a, .pagination > li > span {color: $accent}
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {background: $accent; border-color: darken($accent, 10%);}
+
+.uib-datepicker-popup, .uib-datepicker {
+    width: 100%;
+    height: 100%;
+}
+.uib-daypicker, .uib-monthpicker, .uib-yearpicker {width: 100%;}
+.uib-day button, .uib-month button, .uib-year button {background-color: white;}
+.uib-day button, .uib-month button, .uib-year button, .uib-daypicker .btn, .uib-monthpicker .btn, .uib-yearpicker .btn, .uib-datepicker-popup li .uib-datepicker .uib-daypicker:focus {outline: 0!important; border: 0!important;}
+.uib-daypicker .text-info {color: $accent;}
+.uib-daypicker .btn-info {background: $accent;}
+
+.appLoader {
+    background: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    .loading {
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+}
+
+.mainAlerts {
+    position: fixed;
+    top: 15%;
+    left: 40%;
+    margin-top: -50px;
+    margin-left: -50px;
+    z-index: 999999999;
+    .alert-success, .alert-danger, .alert-info, .alert-warning {opacity: .9; font-size: 16px; padding: 25px 40px; @include rad(4px);}
+}
+
+// ... animation
+.animate-show {
+  line-height: 20px;
+  opacity: 1;
+}
+.animate-show.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+.animate-show.ng-hide {
+  opacity: 0;
+  padding: 0 10px;
+}
+
+//checkmark animation
+.savedsvg {
+    width: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    text-align: center;
+    color: $accent;
+    background: white;
+    border: 1px solid #f7f7f7;
+    padding: 10px 15px;
+    @include rad(10px);
+    .checkmark {
+        stroke: $accent;
+        stroke-dashoffset: 745.74853515625;
+        stroke-dasharray: 745.74853515625;
+        animation: dash 2s ease-out forwards infinite;
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 745.74853515625;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}

@@ -9,10 +9,29 @@ angular.module('ezapp')
     };
 })
 
-.directive('user', function () {
+.directive('headmenu', function ($window) {
+    return function(scope, element, attrs) {
+        angular.element($window).bind("scroll", function() {
+             if (this.pageYOffset >= 100) {
+                 scope.pgScroll = true;
+             } else {
+                 scope.pgScroll = false;
+             }
+             if (this.pageYOffset >= 700) {
+                 scope.hideHero = true;
+             } else {
+                 scope.hideHero = false;
+             }
+            scope.$apply();
+        });
+    };
+})
+
+.directive('footer', function () {
     return {
         restrict: 'A',
-        templateUrl: 'views/partials/user.html'
+        replace: true,
+        templateUrl: 'views/partials/footer.html'
     };
 })
 

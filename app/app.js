@@ -49,8 +49,8 @@ angular.module('ezapp', [
                     pageId: null
                 }
             })
-            .state('about', {
-                url: '/about',
+            .state('contact', {
+                url: '/contact',
                 templateUrl: 'views/home.html',
                 controller: 'HomeCtrl as vm',
                 params: {
