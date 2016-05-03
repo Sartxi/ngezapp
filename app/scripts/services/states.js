@@ -19,7 +19,6 @@
                 $rootScope.stateInfo = $state.params;
                 if ($sessionStorage.language && state.params.language !== $sessionStorage.language) {
                     $sessionStorage.language = state.params.language;
-                    // $rootScope.lngTag = LanguageService.check();
                 }
             } else {
                 $rootScope.stateInfo = {};

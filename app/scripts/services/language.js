@@ -2,7 +2,7 @@
 
 (function () {
 
-    function LanguageService($rootScope, $sessionStorage, $state, growl, $log) {
+    function LanguageService($rootScope, $sessionStorage, $state, growl, $log, $window) {
 
         var self = this;
 
@@ -10,8 +10,14 @@
             if ($sessionStorage.language) {
                 $rootScope.stateInfo.language = $sessionStorage.language;
             } else {
-                $rootScope.stateInfo.language = 'en'; // english default
-                $sessionStorage.language = 'en';
+                var userLang = $window.navigator.userLanguage || $window.navigator.language;
+                if (userLang === 'es' || userLang === 'es-HN' || userLang === 'es-MX' || userLang === 'es-NI' || userLang === 'es-PA' || userLang === 'es-PY' || userLang === 'es-PE' || userLang === 'es-PR' || userLang === 'es-ES' || userLang === 'es-UY' || userLang === 'es-AR' || userLang === 'es-BO' || userLang === 'es-CL' || userLang === 'es-CO' || userLang === 'es-CR' || userLang === 'es-EC' || userLang === 'es-SV' || userLang === 'es-GT' || userLang === 'es-VE') {
+                    $rootScope.stateInfo.language = 'es'; // english default
+                    $sessionStorage.language = 'es';
+                } else {
+                    $rootScope.stateInfo.language = 'en'; // english default
+                    $sessionStorage.language = 'en';
+                }
             }
         };
 
@@ -143,7 +149,12 @@
                     language = spanish;
                 }
             } else {
-                language = english;
+                var userLang = $window.navigator.userLanguage || $window.navigator.language;
+                if (userLang === 'es' || userLang === 'es-HN' || userLang === 'es-MX' || userLang === 'es-NI' || userLang === 'es-PA' || userLang === 'es-PY' || userLang === 'es-PE' || userLang === 'es-PR' || userLang === 'es-ES' || userLang === 'es-UY' || userLang === 'es-AR' || userLang === 'es-BO' || userLang === 'es-CL' || userLang === 'es-CO' || userLang === 'es-CR' || userLang === 'es-EC' || userLang === 'es-SV' || userLang === 'es-GT' || userLang === 'es-VE') {
+                    language = spanish;
+                } else {
+                    language = english;
+                }
             }
 			return language;
 		};
@@ -189,5 +200,5 @@
     }
 
     angular.module('ezapp')
-        .service('LanguageService', ['$rootScope', '$sessionStorage', '$state', 'growl', '$log', LanguageService]);
+        .service('LanguageService', ['$rootScope', '$sessionStorage', '$state', 'growl', '$log', '$window', LanguageService]);
 }());
