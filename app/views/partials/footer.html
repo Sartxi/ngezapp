@@ -1,23 +1,72 @@
 <div id="footer" class="footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8">
-				<div class="row">
-					<div class="col-md-4">
-						<h5>Merchants</h5>
+			<div class="col-md-4 certSocial">
+				<div class="text-center">
+					<img src="assets/images/certificate.jpg" class="certificates">
+				</div>
+
+				<div class="footMobileMenu" ng-show="funsize">
+					<br />
+					<div class="footMenuItems">
+						<h5 class="darkText" ng-click="footmenu1 = !footmenu1">
+							<span class="fa fa-plus pull-right"></span>
+							<strong>{{staticContent.flo}}</strong>
+						</h5>
+						<div uib-collapse="!footmenu1">
+							<div ng-include="'views/partials/footer/merchantLinks.html'"></div>
+						</div>
+						<hr>
 					</div>
-					<div class="col-md-4">
-						<h5>Customers</h5>
+					<div class="footMenuItems">
+						<h5 class="darkText" ng-click="footmenu2 = !footmenu2">
+							<span class="fa fa-plus pull-right"></span>
+							<strong>{{staticContent.flt}}</strong>
+						</h5>
+						<div uib-collapse="!footmenu2">
+							<div ng-include="'views/partials/footer/customerLinks.html'"></div>
+						</div>
+						<hr>
 					</div>
-					<div class="col-md-4">
-						<h5>Company</h5>
+					<div class="footMenuItems">
+						<h5 class="darkText" ng-click="footmenu3 = !footmenu3">
+							<span class="fa fa-plus pull-right"></span>
+							<strong>{{staticContent.flth}}</strong>
+						</h5>
+						<div uib-collapse="!footmenu3">
+							<div ng-include="'views/partials/footer/companyLinks.html'"></div>
+						</div>
+						<hr>
+					</div>
+					<br />
+				</div>
+
+				<ul class="list-unstyled list-inline social text-center">
+					<li><a href="https://www.facebook.com/approvalinasnap/?fref=ts" target="_blank"><img src="assets/images/facebook.jpg" alt="Snap Finance Facebook"></a></li>
+					<li><a><img src="assets/images/twitter.jpg" alt="Snap Finance Twitter"></a></li>
+					<li><a><img src="assets/images/instagram.jpg" alt="Snap Finance instagram"></a></li>
+					<li><a><img src="assets/images/youtube.jpg" alt="Snap Finance Youtube"></a></li>
+				</ul>
+				<br />
+			</div>
+			<div class="col-md-8" ng-hide="funsize">
+				<div class="row footerlinks">
+					<div class="col-md-4 col-sm-4">
+						<h5 class="darkText">{{staticContent.flo}}</h5>
+						<div ng-include="'views/partials/footer/merchantLinks.html'"></div>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<h5 class="darkText">{{staticContent.flt}}</h5>
+						<div ng-include="'views/partials/footer/customerLinks.html'"></div>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<h5 class="darkText">{{staticContent.flth}}</h5>
+						<div ng-include="'views/partials/footer/companyLinks.html'"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4">
-			</div>
 			<div class="col-md-12 text-center">
-				Copyright © 2016 Snap Finance | All Rights Reserved
+				{{staticContent.copyright}}
 			</div>
 		</div>
 	</div>

@@ -15,7 +15,7 @@
         var root = $rootScope;
 
         function init() {
-            root.staticContent = LanguageService.check();
+            scope.staticContent = LanguageService.check();
             scope.mobilemenu = false;
         }
 
@@ -48,9 +48,9 @@
         };
 
         // Language
-        root.setlanguage = function () {
+        scope.setlanguage = function () {
             LanguageService.toggle();
-            root.staticContent = LanguageService.check();
+            scope.staticContent = LanguageService.check();
             LanguageService.content($state.current);
         };
 

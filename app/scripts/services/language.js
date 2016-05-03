@@ -58,7 +58,22 @@
                 sfsb: 'Search',
                 //blog
                 blogtitle: 'The Snap Blog',
-                backBtn: 'Back'
+                backBtn: 'Back',
+                //footer
+                flo: 'Merchants',
+                flt: 'Customers',
+                flth: 'Company',
+                flmo: 'How it Works',
+                flmt: 'Is Snap Right for Me?',
+                flmth: 'Testimonials',
+                flmf: 'Apply',
+                flmto: 'Customer Reviews',
+                flmtt: 'Contact',
+                flmtho: 'Overview',
+                flmtht: 'The Team',
+                flmthth: 'Terms of Use',
+                flmthf: 'Privacy Policy',
+                copyright: 'Copyright © 2016 Snap Finance | All Rights Reserved'
             };
             var spanish = {
                 // CTA
@@ -101,7 +116,22 @@
                 sfsb: 'Buscar',
                 //blog
                 blogtitle: 'El Blog Snap',
-                backBtn: 'Atrás'
+                backBtn: 'Atrás',
+                //footer
+                flo: 'Comerciantes',
+                flt: 'Clientes',
+                flth: 'Empresa',
+                flmo: 'Cómo Funciona',
+                flmt: 'Snap es adecuado para mí?',
+                flmth: 'Testimonios',
+                flmf: 'Aplica',
+                flmto: 'Opiniones',
+                flmtt: 'Contacto',
+                flmtho: 'Visión',
+                flmtht: 'El Equipo',
+                flmthth: 'Términos de Uso',
+                flmthf: 'Política de Privacidad',
+                copyright: 'Copyright © 2016 Snap Finanzas | Todos los derechos reservados'
             };
 
 			var lngStore = $sessionStorage.language;

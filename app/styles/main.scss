@@ -440,7 +440,7 @@ header {
             background: white url('../assets/images/finderBackground.jpg') center no-repeat;
             background-size: 100%;
             .finderContainer {
-                padding: 115px 40px;
+                padding: 106px 40px;
                 .hspace {margin-bottom: 40px;}
             }
         }
@@ -450,11 +450,42 @@ header {
     }
     #footer {
         background: white;
+        border-top: 1px solid #ddd;
         width: 100%;
         display: block;
         position: relative;
         padding: 20px 0;
         color: #999;
         font-size: 13px;
+        .footerlinks {
+            padding: 20px 0 40px;
+            .darkText {font-weight: 600}
+            ul li {margin-bottom: 11px;}
+            a {color: #999; &:hover{color: $accent; text-decoration: none}}
+        }
+        .certificates {margin: 20px 0;}
+        .social {
+            margin: 20px 0;
+            li {width: 24.1%; text-align: center;}
+        }
+        @include respond-to(medium) {
+            .certSocial {float: right;}
+        }
+        .footMobileMenu {
+            padding: 0 20px;
+            .footMenuItems {
+                h5 {cursor: pointer; &:hover {color: $accent}}
+                ul li {
+                    border-top: 1px solid #eee;
+                    &:first-child {margin-top: 20px;}
+                    a {
+                        padding: 10px;
+                        color: $solid;
+                        display: block;
+                        &:hover {color: $accent; background: #eee; text-decoration: none;}
+                    }
+                }
+            }
+        }
     }
 }
