@@ -1,5 +1,14 @@
 'use strict';
 
+/**
+* @ngdoc overview
+* @name ezapp
+* @description
+* # ezapp
+*
+* Main module of the application.
+*/
+
 var $stateProviderRef;
 var $urlRouterProviderRef;
 

@@ -12,10 +12,10 @@
             } else {
                 var userLang = $window.navigator.userLanguage || $window.navigator.language;
                 if (userLang === 'es' || userLang === 'es-HN' || userLang === 'es-MX' || userLang === 'es-NI' || userLang === 'es-PA' || userLang === 'es-PY' || userLang === 'es-PE' || userLang === 'es-PR' || userLang === 'es-ES' || userLang === 'es-UY' || userLang === 'es-AR' || userLang === 'es-BO' || userLang === 'es-CL' || userLang === 'es-CO' || userLang === 'es-CR' || userLang === 'es-EC' || userLang === 'es-SV' || userLang === 'es-GT' || userLang === 'es-VE') {
-                    $rootScope.stateInfo.language = 'es'; // english default
+                    $rootScope.stateInfo.language = 'es';
                     $sessionStorage.language = 'es';
                 } else {
-                    $rootScope.stateInfo.language = 'en'; // english default
+                    $rootScope.stateInfo.language = 'en';
                     $sessionStorage.language = 'en';
                 }
             }

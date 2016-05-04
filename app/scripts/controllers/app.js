@@ -1,6 +1,7 @@
 'use strict';
 
 (function() {
+
     /**
      * @ngdoc function
      * @name ezadmin.controller:AppCtrl
@@ -8,7 +9,6 @@
      * # AppCtrl
      * Application controller of the ngezadmin
      */
-
 
     function AppCtrl($scope, $log, LanguageService, $rootScope, $state, $window) {
         var scope = $scope;
