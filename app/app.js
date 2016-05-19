@@ -52,16 +52,48 @@ angular.module('ezapp', [
             $stateProviderRef
             .state('home', {
                 url: '/',
-                templateUrl: 'views/home.html',
+                templateUrl: 'views/static/home.html',
                 controller: 'HomeCtrl as vm',
                 params: {
                     pageId: null
                 }
             })
-            .state('contact', {
-                url: '/contact',
-                templateUrl: 'views/home.html',
+            .state('merchants', {
+                url: '/merchants',
+                templateUrl: 'views/static/merchants.html',
                 controller: 'HomeCtrl as vm',
+                params: {
+                    pageId: null
+                }
+            })
+            .state('customeright', {
+                url: '/is-snap-right-for-me',
+                templateUrl: 'views/static/customersright.html',
+                controller: 'PagesCtrl as vm',
+                params: {
+                    pageId: null
+                }
+            })
+            .state('howitworks', {
+                url: '/customers',
+                templateUrl: 'views/static/howitworks.html',
+                controller: 'PagesCtrl as vm',
+                params: {
+                    pageId: null
+                }
+            })
+            .state('merchantright', {
+                url: '/merchants/is-it-right-for-you-merchants',
+                templateUrl: 'views/static/merchantsright.html',
+                controller: 'PagesCtrl as vm',
+                params: {
+                    pageId: null
+                }
+            })
+            .state('financetips', {
+                url: '/finance-tips',
+                templateUrl: 'views/static/financetips.html',
+                controller: 'PagesCtrl as vm',
                 params: {
                     pageId: null
                 }
@@ -69,7 +101,7 @@ angular.module('ezapp', [
             .state('blog', {
                 url: '/blog',
                 title: 'Blog',
-                templateUrl: 'views/blog.html',
+                templateUrl: 'views/static/blog.html',
                 controller: 'BlogCtrl as vm',
                 params: {
                     pageId: null
@@ -86,9 +118,9 @@ angular.module('ezapp', [
                 }
                 if (state.type === 'page') { // set pageID for pages content
                     var regstates = $state.get();
-                    angular.forEach(regstates, function (r) {
-                        if (r.url === state.url) {
-                            r.params.pageId = state.pageId;
+                    angular.forEach(regstates, function (s) {
+                        if (s.url === state.url) {
+                            s.params.pageId = state.pageId;
                         }
                     });
                 }

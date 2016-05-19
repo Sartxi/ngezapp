@@ -29,6 +29,12 @@ $brand-primary: #003567;
     }
 }
 
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+  -webkit-box-shadow:$top $left $blur $color #{$inset};
+  -moz-box-shadow:$top $left $blur $color #{$inset};
+  box-shadow:$top $left $blur $color #{$inset};
+}
+
 @mixin rad ($rad) {
     border-radius: $rad;
     -webkit-border-radius: $rad;
@@ -61,7 +67,7 @@ $dark: #003567;
 .darkText {color: $dark}
 
 html {overflow-x: hidden;}
-body {font-family: $font;-webkit-backface-visibility: hidden; background: #f9f9f9;}
+body {font-family: $font;-webkit-backface-visibility: hidden; background: #fff;}
 
 a, .pagination, .carousel, .panel-title a {cursor: pointer; color: $accent; &:hover {color: darken($accent, 20%);}}
 a:focus, button:focus {outline:0!important;}
@@ -76,7 +82,7 @@ a:focus, button:focus {outline:0!important;}
 }
 .btn-success { background-color:$accent; border: 0; padding: 13px 49px;}
 .btn-success.active, .btn-success:active, .open>.dropdown-toggle.btn-success {background-color: darken($accent, 8%); border-color: darken($accent, 10%);}
-.btn-mega {padding: 10px 22px!important}
+.btn-mega {padding: 13px 64px; font-size: 21px;}
 .badge {background-color:$solid;}
 .btn-panel {
     background: white;
@@ -130,6 +136,13 @@ a:focus, button:focus {outline:0!important;}
         }
     }
 }
+
+.input-mega {
+    padding: 27px 22px;
+    font-size: 21px;
+    border: 0;
+}
+
 .panel-questions {
     background:#eee;
     .panel-body {background:white;}

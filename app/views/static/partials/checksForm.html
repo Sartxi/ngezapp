@@ -1,0 +1,57 @@
+<form name="snapRequired" ng-submit="submitChecks()" class="snapRequired">
+	<div class="row">
+		<div class="col-sm-1">
+			<div class="checkbox" ng-class="{active:submit.age}" ng-click="submit.age = !submit.age"></div>
+		</div>
+		<div class="col-sm-11 checktext">
+			<span ng-class="{'attention':!submit.age && checkserror}">I am 18 years or older.</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-1">
+			<div class="checkbox" ng-class="{active:submit.bank}" ng-click="submit.bank = !submit.bank"></div>
+		</div>
+		<div class="col-sm-11 checktext">
+			<span ng-class="{'attention':!submit.bank && checkserror}">I have a checking account, and it has been open for at least 90 days.</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-1">
+			<div class="checkbox" ng-class="{active:submit.bankuse}" ng-click="submit.bankuse = !submit.bankuse"></div>
+		</div>
+		<div class="col-sm-11 checktext">
+			<span ng-class="{'attention':!submit.bankuse && checkserror}">In the last 30 days, my checking account has had at least five deposits or withdrawals with no non-sufficient-fund fees.</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-1">
+			<div class="checkbox" ng-class="{active:submit.income}" ng-click="submit.income = !submit.income"></div>
+		</div>
+		<div class="col-sm-11 checktext">
+			<span ng-class="{'attention':!submit.income && checkserror}">I have had a steady source of income for the past six months.</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-1">
+			<div class="checkbox" ng-class="{active:submit.incomelimit}" ng-click="submit.incomelimit = !submit.incomelimit"></div>
+		</div>
+		<div class="col-sm-11 checktext">
+			<span ng-class="{'attention':!submit.incomelimit && checkserror}">I currently make at least $1,000 of personal income per month.</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-1">
+			<div class="checkbox" ng-class="{active:submit.checking}" ng-click="submit.checking = !submit.checking"></div>
+		</div>
+		<div class="col-sm-11 checktext">
+			<span ng-class="{'attention':!submit.checking && checkserror}">I deposit the majority of my income into my checking account.</span>
+		</div>
+	</div>
+	<div class="row text-center">
+		<div class="col-md-12">
+			<br /><br />
+			<button type="submit" class="btn btn-success btn-lg">{{staticContent.ctas}}</button>
+			<br /><br />
+		</div>
+	</div>
+</form>

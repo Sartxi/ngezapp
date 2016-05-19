@@ -5,7 +5,7 @@ angular.module('ezapp')
     return {
         restrict: 'A',
         replace: true,
-        templateUrl: 'views/partials/header.html'
+        templateUrl: 'views/static/partials/header.html'
     };
 })
 
@@ -31,35 +31,35 @@ angular.module('ezapp')
     return {
         restrict: 'A',
         replace: true,
-        templateUrl: 'views/partials/footer.html'
+        templateUrl: 'views/static/partials/footer.html'
     };
 })
 
 .directive('alerts', function () {
     return {
         restrict: 'A',
-        templateUrl: 'views/partials/alerts.html'
+        templateUrl: 'views/static/partials/alerts.html'
     };
 })
 
 .directive('browser', function () {
     return {
         restrict: 'A',
-        templateUrl: 'views/partials/browser.html'
+        templateUrl: 'views/static/partials/browser.html'
     };
 })
 
 .directive('loader', function () {
     return {
         restrict: 'EA',
-        templateUrl: 'views/partials/loading.html'
+        templateUrl: 'views/static/partials/loading.html'
     };
 })
 
 .directive('saveMsg', function () {
     return {
         restrict: 'E',
-        templateUrl: 'views/partials/checkmark.html'
+        templateUrl: 'views/static/partials/checkmark.html'
     };
 })
 

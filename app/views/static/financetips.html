@@ -1,0 +1,114 @@
+
+<div id="financeTips" class="staticPages" ng-class="{'droptop':!funsize}">
+	<div id="financeTipsContainer" class="financetips">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 tipshead">
+					<h1 class="text-center">{{vm.content.block1}}</h1><br />
+					<h2 class="accentText text-center">{{vm.content.block2}}</h2>
+					<br /><br />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4" ng-click="vm.seeTopics()">
+					<div class="financetopics">
+						<img src="assets/images/tips1.jpg" class="img-responsive tipsicons">
+						<h3>{{vm.content.block3}}</h3>
+						<span class="topiccat">Financing</span>
+					</div>
+				</div>
+				<div class="col-md-4" ng-click="vm.seeTopics()">
+					<div class="financetopics">
+						<img src="assets/images/tips2.jpg" class="img-responsive tipsicons">
+						<h3>{{vm.content.block4}}</h3>
+						<span class="topiccat">Financing</span>
+					</div>
+				</div>
+				<div class="col-md-4" ng-click="vm.seeTopics()">
+					<div class="financetopics">
+						<img src="assets/images/tips3.jpg" class="img-responsive tipsicons">
+						<h3>{{vm.content.block5}}</h3>
+						<span class="topiccat">Financing</span>
+					</div>
+				</div>
+				<div class="col-md-4" ng-click="vm.seeTopics()">
+					<div class="financetopics">
+						<img src="assets/images/tips4.jpg" class="img-responsive tipsicons">
+						<h3>{{vm.content.block6}}</h3>
+						<span class="topiccat">Financing</span>
+					</div>
+				</div>
+				<div class="col-md-4" ng-click="vm.seeTopics()">
+					<div class="financetopics">
+						<img src="assets/images/tips5.jpg" class="img-responsive tipsicons">
+						<h3>{{vm.content.block7}}</h3>
+						<span class="topiccat">Financing</span>
+					</div>
+				</div>
+				<div class="col-md-4" ng-click="vm.seeTopics('blog')">
+					<div class="financetopics">
+						<img src="assets/images/tips6.jpg" class="img-responsive tipsicons">
+						<h3>{{vm.content.block8}}</h3>
+						<span class="topiccat">Financing</span>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="tipsSocial">
+						<div class="row">
+							<div class="col-sm-6 socialTitle">
+								<h3>Share this financial advice:</h3>
+							</div>
+							<div class="col-sm-6 socialIcons">
+								<a href="" target="_blank"><i class="fa fa-facebook"></i></a>
+								<a href="" target="_blank"><i class="fa fa-twitter"></i></a>
+								<a href="" target="_blank"><i class="fa fa-instagram"></i></a>
+								<a href="" target="_blank"><i class="fa fa-youtube-play"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="financeTipsBlog" class="information">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center infoSection pushdown">
+					<h2>Trending Financial Topics</h2>
+					<br /><br /><br />
+				</div>
+			</div>
+			<div class="row tipsblog" ng-controller="BlogCtrl as vm">
+	            <div class="col-md-12">
+                    <div ng-repeat="post in vm.posts" class="col-md-4">
+                        <h3><a ui-sref="post{{post.id}}{{stateInfo.language}}">{{post.name}}</a></h3>
+						<div class="postBody">
+	                        <div ng-bind-html="post.pageHtml"></div>
+						</div>
+                        <hr>
+                    </div>
+	            </div>
+		    </div>
+		</div>
+	</div>
+	<div id="newsLetterSignup" class="footerForm newsletter">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 formContainer text-center">
+					<h2 class="hspace">{{staticContent.sfnl}}</h2>
+					<form name="newsLetterForm" ng-submit="vm.signupnews()" class="form-inline">
+						<div class="form-group">
+							<input type="text" class="form-control input-lg input-mega" placeholder="Name" ng-model="newsletter.name">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg input-mega" placeholder="Email" ng-model="newsletter.email">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-lg btn-mega">{{staticContent.ctasu}}</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -24,9 +24,11 @@
 		self.check = function () {
 			var language;
             var english = {
-                // CTA
+                //CTA
                 ctao: 'Get Approved!',
                 ctat: 'Apply Now!',
+                ctas: 'Submit',
+                ctasu: 'Sign Up!',
                 //menu
                 lolo: 'Español',
                 lolt: 'My Account',
@@ -35,7 +37,7 @@
                 ltlth: 'Finance Tips',
                 ltlf: 'Become a Merchant',
                 ltlfi: 'APPLY NOW',
-                //hero
+                //hero - homePage
                 hlo: 'UP TO $3000',
                 hlt: 'NO CREDIT',
                 hlth: 'NEEDED',
@@ -43,27 +45,47 @@
                 hlft: 'fast & easy',
                 hlfth: '100 day cash pay-off',
                 hbt: 'Get Approved!',
-                //hero steps
+                //hero steps - homePage
                 hsot: 'Apply',
                 hsob: 'Just enter your info and you\'re on your way.',
                 hstt: 'Approve',
-                hstb: 'Get approved up to $3000.',
+                hstb: 'Get approved up to <strong>$3000</strong>.',
                 hstht: 'Shop',
                 hsthb: 'Find a Snap store near you and start shopping.',
                 //info sections - homePage
-                isot: 'Approval in a',
-                istt: 'Up To 90% Approvals.',
-                istth: 'Bad Credit, No Credit, OK!',
-                isttho: 'Finance',
-                isttht: 'up to $3000',
-                istthth: 'today, even after Bankruptcy.',
+                isot: 'Approval in a <strong>Snap!</strong>',
+                istt: 'Up To 90% Approvals.<br><strong>Bad Credit, No Credit, OK!</strong>',
+                istth: 'Finance <strong>up to $3000</strong> today, even after Bankruptcy.',
+                //hero - merchantsPage
+                mhlo: 'DON\'T LOSE SALES',
+                mhlt: 'OFFER SNAP',
+                mhlth: 'IN YOUR STORE',
+                mhlfo: 'fast & easy',
+                mhlft: 'no credit needed',
+                mhlfth: '100 day cash pay-off',
+                mhbt: 'Get Snap!',
+                //hero steps - merchantsPage
+                mhsot: 'Apply',
+                mhsob: 'Just enter your info and you\'re on your way.',
+                mhstt: 'Approve',
+                mhstb: 'Get approved up to <strong>$3000</strong>.',
+                mhstht: 'Shop',
+                mhsthb: 'Find a Snap store near you and start shopping.',
+                //info sections - merchantsPage
+                misot: 'No Credit Financing =<br><strong>Increased Sales!</strong>',
+                mistt: '<strong>Up To 90% Approvals.</strong><br> Up to $3000.',
+                mistth: 'Customers get <strong>up to $3000.</strong><br>You get more sales.',
                 //testimonials
                 tscta: 'Learn how Snap Finance helped real customers to get financed for furniture, mattresses, tires, jewelry and more.',
+                mtscta: 'Learn how Snap Finance helped real businesses like yours to grow.',
                 //storeFinder
                 sfsl: 'Find a store near you.',
+                sfnl: 'Sign up to recieve updates on Financial Tips.',
                 sfsb: 'Search',
                 //blog
-                blogtitle: 'The Snap Blog',
+                blogtitle: 'Financial Fitness Blog',
+                blogsub: 'Guidance from the professionals',
+                readPost: 'Read More',
                 backBtn: 'Back',
                 //footer
                 flo: 'Merchants',
@@ -82,62 +104,7 @@
                 copyright: 'Copyright © 2016 Snap Finance | All Rights Reserved'
             };
             var spanish = {
-                // CTA
-                ctao: 'Consigue Aprobado!',
-                ctat: 'Aplica ya!',
-                //menu
-                lolo: 'English',
-                lolt: 'Mi Cuenta',
-                ltlo: 'Snap es adecuado para mí?',
-                ltlt: 'Cómo Funciona',
-                ltlth: 'Consejos de Finanzas',
-                ltlf: 'Comerciante Convertido',
-                ltlfi: 'APLICA YA',
-                //hero
-                hlo: 'HASTA $3000',
-                hlt: 'SIN CRÉDITO',
-                hlth: 'NECESARIO',
-                hlfo: 'aplica online',
-                hlft: 'rápido y fácil',
-                hlfth: '100 días de efectivo pago de compensación',
-                hbt: 'Consigue Aprobado!',
-                //hero steps
-                hsot: 'Aplica',
-                hsob: 'Solo tienes que introducir su información y usted está en su camino.',
-                hstt: 'Aprobar',
-                hstb: 'Obtener la aprobación hasta $3000.',
-                hstht: 'Tienda',
-                hsthb: 'Encuentra una tienda cerca de usted Snap y empezar a comprar.',
-                //info sections - homePage
-                isot: 'La aprobación de una',
-                istt: 'Hasta el 90% Aprobaciones.',
-                istth: 'Mal crédito, sin crédito, OK!',
-                isttho: 'Financiar',
-                isttht: 'hasta $3000',
-                istthth: 'hoy en día, incluso después de la bancarrota.',
-                //testimonials
-                tscta: 'Aprender cómo Snap Finanzas ayudó a los clientes reales para obtener financiamiento para muebles, colchones, neumáticos, joyería y más.',
-                //storeFinder
-                sfsl: 'Encuentra una tienda cerca de ti.',
-                sfsb: 'Buscar',
-                //blog
-                blogtitle: 'El Blog Snap',
-                backBtn: 'Atrás',
-                //footer
-                flo: 'Comerciantes',
-                flt: 'Clientes',
-                flth: 'Empresa',
-                flmo: 'Cómo Funciona',
-                flmt: 'Snap es adecuado para mí?',
-                flmth: 'Testimonios',
-                flmf: 'Aplica',
-                flmto: 'Opiniones',
-                flmtt: 'Contacto',
-                flmtho: 'Visión',
-                flmtht: 'El Equipo',
-                flmthth: 'Términos de Uso',
-                flmthf: 'Política de Privacidad',
-                copyright: 'Copyright © 2016 Snap Finanzas | Todos los derechos reservados'
+                //add translations
             };
 
 			var lngStore = $sessionStorage.language;
@@ -146,7 +113,8 @@
                 if (lngStore === 'en') {
                     language = english;
                 } else {
-                    language = spanish;
+                    // language = spanish;
+                    language = english;
                 }
             } else {
                 var userLang = $window.navigator.userLanguage || $window.navigator.language;

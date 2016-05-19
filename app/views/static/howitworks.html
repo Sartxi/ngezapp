@@ -1,0 +1,88 @@
+
+<div id="customersHowItWorks" class="staticPages" ng-class="{'droptop':!funsize}">
+	<div id="hero" class="hero">
+		<div ng-hide="hideHero">
+			<img src="assets/images/howitworkshero.jpg" class="heroImg" ng-hide="funsize">
+			<img src="assets/images/howitworkshero.jpg" class="heroImgfunsize" ng-show="funsize && !micro">
+			<img src="assets/images/hero-micro.jpg" class="heroImgmicro" ng-show="micro">
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 text-center snapcta singleheader" ng-class="{'spanish': stateInfo.language === 'es'}">
+					<h1 class="jumboHeader">{{vm.content.block1}}</h1>
+					<br />
+					<button type="button" ui-sref="apply" class="btn btn-success cta">{{staticContent.ctat}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="howitworksinfo1" class="information">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 infoSection pushdown">
+					<div class="row">
+						<div class="col-md-6">
+							<img src="assets/images/hiwinfo1.jpg" class="big img-responsive">
+						</div>
+						<div class="col-md-6 infoText">
+							<h2 ng-bind-html="vm.content.block2"></h2>
+							<br /><br />
+							<p ng-bind-html="vm.content.block3"></p><br />
+							<br /><br />
+							<button type="button" ui-sref="apply" class="btn btn-success mainCTAbtn">{{staticContent.ctat}}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="howitworksinfo2" class="testimonials">
+		<div class="testimones text-center">
+			<img src="assets/images/hiwinfo2.jpg" class="testBg">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 testQuote">
+						<h2 ng-bind-html="vm.content.block5"></h2><br />
+						<p ng-bind-html="vm.content.block6"></p><br />
+						<a ng-click="vm.watchVideo(vm.content.block4)" class="vidLink"><span class="fa fa-play-circle-o"></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="howitworksinfo3" class="information">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 infoSection pushdown">
+					<div class="row">
+						<div class="col-md-6 lgright">
+							<img src="assets/images/hiwinfo3.jpg" class="big img-responsive">
+						</div>
+						<div class="col-md-6 infoText">
+							<h2 ng-bind-html="vm.content.block7"></h2>
+							<br /><br />
+							<p>{{vm.content.block8}}</p>
+							<br /><br />
+							<button type="button" ui-sref="apply" class="btn btn-success mainCTAbtn">{{staticContent.ctat}}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="locationFinder" class="footerForm location">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 formContainer text-center">
+					<h3 class="hspace">{{staticContent.sfsl}}</h3>
+					<form name="findLocation" ng-submit="vm.findLocation()">
+						<div class="form-group">
+							<input type="text" class="form-control input-lg text-center" placeholder="Zip Code" ng-model="findLocation.zipCode">
+							<button type="submit" class="btn btn-primary btn-lg btn-block">{{staticContent.sfsb}}</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

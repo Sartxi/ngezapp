@@ -1,4 +1,5 @@
-<div id="homePage" ng-class="{'content':!funsize}">
+
+<div id="homePage" class="staticPages" ng-class="{'droptop':!funsize}">
 	<div id="hero" class="hero">
 		<div ng-hide="hideHero">
 			<img src="assets/images/hero.jpg" class="heroImg" ng-hide="funsize">
@@ -7,13 +8,13 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 col-sm-8 text-center mainCTA" ng-class="{'spanish': stateInfo.language === 'es'}">
-					<span class="herocopy u">{{staticContent.hlo}}</span><br>
-					<span class="herocopy up">{{staticContent.hlt}}</span><br>
-					<span class="herocopy upup">{{staticContent.hlth}}</span><br>
-					<span class="details">{{staticContent.hlfo}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{staticContent.hlft}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{staticContent.hlfth}}</span>
+				<div class="col-md-6 col-sm-8 text-center snapcta" ng-class="{'spanish': stateInfo.language === 'es'}">
+					<span class="line1">{{staticContent.hlo}}</span><br>
+					<span class="line2">{{staticContent.hlt}}</span><br>
+					<span class="line3">{{staticContent.hlth}}</span><br>
+					<span class="line4">{{staticContent.hlfo}} <span class="bullets">•</span> {{staticContent.hlft}} <span class="bullets">•</span> {{staticContent.hlfth}}</span>
 					<br />
-					<button type="button" ui-sref="apply" class="btn btn-success mainCTAbtn">{{staticContent.hbt}}</button>
+					<button type="button" ui-sref="apply" class="btn btn-success cta">{{staticContent.hbt}}</button>
 				</div>
 			</div>
 		</div>
@@ -33,7 +34,7 @@
 						<div class="heroStep" ng-class="{'ind2':!funsize}">
 							<img src="assets/images/stepsIcon2.png" class="img-responsive">
 							<span class="stepsTitle"><strong>{{staticContent.hstt}}</strong></span><br>
-							<span class="stepsText">{{staticContent.hstb}}<br>&nbsp;</span>
+							<span class="stepsText"><span ng-bind-html="staticContent.mhstb"></span><br>&nbsp;</span>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4 steps">
@@ -56,7 +57,7 @@
 							<img src="assets/images/infosection1.jpg" class="img-responsive">
 						</div>
 						<div class="col-md-6 infoText">
-							<h2>{{staticContent.isot}} <strong>Snap!</strong></h2><br />
+							<h2 ng-bind-html="staticContent.isot"></h2><br />
 							<p>{{vm.content.block1}}</p><br /><br />
 							<button type="button" ui-sref="apply" class="btn btn-success mainCTAbtn">{{staticContent.ctat}}</button>
 						</div>
@@ -69,7 +70,7 @@
 							<img src="assets/images/infosection2.jpg" class="img-responsive">
 						</div>
 						<div class="col-md-6 col-md-offset-1 infoText">
-							<h2>{{staticContent.istt}} <br><strong>{{staticContent.istth}}</strong></h2><br />
+							<h2 ng-bind-html="staticContent.istt"></h2><br />
 							<p>{{vm.content.block2}}</p><br /><br />
 							<button type="button" ui-sref="apply" class="btn btn-success mainCTAbtn">{{staticContent.ctat}}</button>
 						</div>
@@ -82,7 +83,7 @@
 							<img src="assets/images/infosection3.jpg" class="img-responsive">
 						</div>
 						<div class="col-md-6 infoText">
-							<h2>{{staticContent.isttho}} <strong>{{staticContent.isttht}}</strong> {{staticContent.istthth}}</h2><br />
+							<h2 ng-bind-html="staticContent.istth"></h2><br />
 							<p>{{vm.content.block3}}</p><br /><br />
 							<button type="button" ui-sref="apply" class="btn btn-success mainCTAbtn">{{staticContent.ctat}}</button>
 						</div>
@@ -92,7 +93,7 @@
 		</div>
 	</div>
 	<div id="testimonials" class="testimonials">
-		<div ng-repeat="testimonial in vm.testimonials" class="testimones text-center" ng-show="vm.activeTest($index)">
+		<div ng-repeat="testimonial in vm.testimonials | orderBy: '-id'" class="testimones text-center" ng-show="vm.activeTest($index)">
 			<img ng-src="{{testimonial.background}}" class="testBg">
 			<div class="testQuote">
 				<span class="testBody">"{{testimonial.body}}"</span><br>
@@ -102,7 +103,7 @@
 		</div>
 		<div class="testCTA">
 			<ul class="list-unstyled list-inline testAvatars">
-				<li ng-repeat="testimonials in vm.testimonials" class="avatars text-center"  ng-class="{'imgoverlay': !vm.activeTest($index)}" ng-click="vm.setTestimonial($index)">
+				<li ng-repeat="testimonials in vm.testimonials | orderBy: '-id'" class="avatars text-center"  ng-class="{'imgoverlay': !vm.activeTest($index)}" ng-click="vm.setTestimonial($index)">
 					<img ng-src="{{testimonials.avatar}}" class="avatar" ng-class="{active: vm.activeTest($index)}">
 					<span class="overlay"></span>
 				</li>
@@ -117,10 +118,10 @@
 			</div>
 		</div>
 	</div>
-	<div id="locationFinder" class="locationFinder">
+	<div id="locationFinder" class="footerForm location">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 finderContainer text-center">
+				<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 formContainer text-center">
 					<h3 class="hspace">{{staticContent.sfsl}}</h3>
 					<form name="findLocation" ng-submit="vm.findLocation()">
 						<div class="form-group">
@@ -133,13 +134,3 @@
 		</div>
 	</div>
 </div>
-
-
-<!-- <div class="col-md-4"><p>{{vm.content.block1}}</p></div>
-<div class="col-md-4"><p>{{vm.content.block2}}</p></div>
-<div class="col-md-4"><p>{{vm.content.block3}}</p></div>
-<div class="col-md-4"><p>{{vm.content.block4}}</p></div>
-<div class="col-md-4"><p>{{vm.content.block5}}</p></div>
-<div class="col-md-4"><p>{{vm.content.block6}}</p></div>
-<div class="col-md-4"><p>{{vm.content.block7}}</p></div>
-<div class="col-md-4"><p>{{vm.content.block8}}</p></div> -->

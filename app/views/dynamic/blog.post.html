@@ -1,4 +1,4 @@
-<div id="blogPost{{vm.content.id}}" class="content" ng-controller="PostCtrl as vm">
+<div id="blogPost{{vm.content.id}}" class="droptop" ng-controller="PostCtrl as vm">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -6,6 +6,7 @@
                 <button class="btn btn-default btn-sm" type="button" ui-sref="blog"><span class="glyphicon glyphicon-chevron-left"></span> {{staticContent.backBtn}}</button>
             </div>
         </div>
-        <div ng-bind-html="vm.content.pageHtml" class="row"></div>
+        <h1>{{vm.content.title}}</h1>
+        <div ng-bind-html="vm.content.pageHtml"></div>
     </div>
 </div>

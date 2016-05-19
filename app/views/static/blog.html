@@ -1,0 +1,108 @@
+<div id="blog" class="blogContainer staticPages droptop">
+    <div id="blogBody" class="information">
+        <div class="bloglid text-center">
+            <h1>{{staticContent.blogtitle}}</h1>
+            <h3>{{staticContent.blogsub}}</h3>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 pull-right filters">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        <input type="text" ng-model="postFilter" placeholder="Find Blog Posts" class="form-control">
+                    </div>
+                    <br />
+                    <div class="list-group">
+                        <div class="list-group-item"><h4><i class="fa fa-book"></i> Catagories</h4></div>
+                        <a ng-repeat="cat in vm.catagories" ng-click="vm.setCat(cat)" class="list-group-item catagories" ng-class="{active:vm.selectedCatagory === cat}">
+                            {{cat | capitalize}}
+                            <span class="pull-right badge">{{(vm.posts | catfilter:cat).length}}</span>
+                        </a>
+                    </div>
+                    <div class="list-group">
+                        <div class="list-group-item"><h4><i class="fa fa-tags"></i> Tags</h4></div>
+                        <div class="list-group-item" ng-show="vm.selectedTag">
+                            <a class="pull-right text-danger" ng-click="vm.selectedTag = ''"><i class="fa fa-times"></i></a>
+                            <span class="label label-success">{{vm.selectedTag | capitalize}}</span>
+                        </div>
+                        <div class="list-group-item">
+                            <span ng-repeat="tag in vm.tags" class="catagories">
+                                <a class="solidText" ng-click="vm.setTag(tag)">{{tag | capitalize}}</a>{{$last ? '' : ($index==vm.tags.length-2) ? ', ' : ', '}}
+                            </span>
+                        </div>
+                    </div>
+                    <br /><br />
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div dir-paginate="post in vm.posts | filter: postFilter | catfilter:vm.selectedCatagory | tagfilter:vm.selectedTag | itemsPerPage: 5 track by $index" class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2>{{post.name}}</h2>
+                                </div>
+                                <div class="col-md-12 postInfo">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <span><i class="fa fa-clock-o"></i> {{post.publishDate | date: 'fullDate'}}</span>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <i class="fa fa-book"></i> Posted in:
+                                            <span ng-repeat="catagory in post.catagories">
+                                                <a ng-click="vm.setCat(catagory.text)" class="accentText">{{catagory.text | capitalize}}</a>{{$last ? '' : ($index==post.catagories.length-2) ? ' and ' : ', '}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <hr>
+                                    <div ng-bind-html="post.pageHtml | limitTo:400"></div>
+                                    <div class="center-block">
+                                        <small>
+                                            <i class="fa fa-tags"></i> Tags:
+                                            <span ng-repeat="tag in post.tags">
+                                                <a ng-click="vm.setTag(tag.text)" class="accentText">{{tag.text | capitalize}}</a>{{$last ? '' : ($index==post.tags.length-2) ? ' and ' : ', '}}
+                                            </span>
+                                        </small>
+                                    </div>
+                                    <br />
+                                    <button type="button" class="btn btn-success btn-blog" ui-sref="post{{post.id}}{{stateInfo.language}}">{{staticContent.readPost}}</button>
+                                    <br /><br /><br /><br /><br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" ng-show="(vm.posts | filter:postFilter | filter:catfilter).length==0">
+                            <div class="panel panel-default panel-custom">
+                                <div class="panel-body text-center">
+                                    <h4>Sorry, there are no blog posts matching <strong>{{postFilter}}</strong></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <dir-pagination-controls></dir-pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="blogSignup" class="footerForm newsletter">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 formContainer text-center">
+					<h2 class="hspace">{{staticContent.sfnl}}</h2>
+					<form name="newsLetterForm" ng-submit="vm.signupnews()" class="form-inline">
+						<div class="form-group">
+							<input type="text" class="form-control input-lg input-mega" placeholder="Name" ng-model="newsletter.name">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg input-mega" placeholder="Email" ng-model="newsletter.email">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-lg btn-mega">{{staticContent.ctasu}}</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

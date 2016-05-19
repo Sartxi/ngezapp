@@ -1,92 +1,5 @@
 @import 'strap';
 
-header {
-    background: white;
-    padding: 12px 0;
-    width: 100%;
-    display: block;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 9;
-    .logo img {
-        max-width: 135px;
-        margin: 5px 0;
-        @include trans(all 0.5s ease);
-        &:hover {max-width: 137px; position: absolute;}
-    }
-    ul.util {
-        li {
-            font-size: 12px;
-            color: #999;
-            text-transform: uppercase;
-            a {
-                color: #999;
-                &:hover {text-decoration: none; color: $accent;}
-            }
-        }
-    }
-    ul.menu {
-        margin-top: 5px;
-        li {
-            font-size: 13px;
-            font-weight: 700;
-            padding-left: 10px;
-            a {
-                color: $solid;
-                &.call {
-                    color: $accent;
-                    border:1px solid $accent;
-                    padding: 5px 16px;
-                    @include rad(4px);
-                    &:hover {background: $accent; color: white;}
-                }
-                &:hover {text-decoration: none; color: $accent;}
-            }
-        }
-        @include respond-to(large) {
-            li {font-size: 16px;}
-        }
-    }
-    .hamburger {
-        .hamburgerTrain {color: $solid; font-size: 43px; padding: 6px 9px 0; display: inline-block;}
-        .applynow {display: inline-block; font-size: 23px; padding: 17px 14px 0 0;}
-    }
-    &.funsize {
-        background: white;
-        height: 75px;
-        position: relative;
-        .logo img {
-            max-width: 95px;
-            @include trans(all 0.5s ease);
-            &:hover {max-width: 100px;}
-        }
-        .hamburger {
-            .hamburgerTrain {font-size: 32px;}
-            .applynow {font-size: 18px;  padding: 14px 14px 0 0;}
-        }
-    }
-    &.fixmenu {
-        background: white;
-        height: 80px;
-        .logo img {
-            max-width: 105px;
-            @include trans(all 0.5s ease);
-            &:hover {max-width: 109px;}
-        }
-        ul.util {
-            @include trans(all 0.5s ease);
-        }
-        ul.menu {
-            margin-top: 16px;
-            @include trans(all 0.5s ease);
-        }
-        .hamburger {
-            .hamburgerTrain {font-size: 35px;}
-            .applynow {font-size: 18px;}
-        }
-    }
-}
 #mobileMenu {
     a {color:white; text-transform: uppercase;}
     .util {
@@ -109,348 +22,635 @@ header {
 }
 
 #content {
-    .content {padding-top: 93px;}
-    #homePage {
-        .hero {
-            display: block;
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            .heroImg {
-                position: fixed;
-                width: 100%;
-                max-width: 1495px;
-                top: 75px;
+    #header {
+        background: white;
+        padding: 12px 0;
+        width: 100%;
+        display: block;
+        position: fixed;
+        top: 0;
+        z-index: 9;
+        .logo img {
+            max-width: 135px;
+            margin: 5px 0;
+            @include trans(all 0.5s ease);
+            &:hover {max-width: 137px; position: absolute;}
+        }
+        ul.util {
+            li {
+                font-size: 12px;
+                color: #999;
+                text-transform: uppercase;
+                a {
+                    color: #999;
+                    &:hover {text-decoration: none; color: $accent;}
+                }
             }
-            @include respond-to(fullwidth) {
-                .heroImg {
-                    left: 50%;
-                    margin-left: -747px;
-                    width: 100%;
-                    right: 0;
+        }
+        ul.menu {
+            margin-top: 5px;
+            li {
+                font-size: 13px;
+                font-weight: 700;
+                padding-left: 10px;
+                a {
+                    color: $solid;
+                    &.call {
+                        color: $accent;
+                        border:1px solid $accent;
+                        padding: 5px 16px;
+                        @include rad(4px);
+                        &:hover {background: $accent; color: white;}
+                    }
+                    &:hover {text-decoration: none; color: $accent;}
                 }
             }
             @include respond-to(large) {
-                .heroImg {
-                    width: 110%!important;
-                    right: 0!important;
-                }
+                li {font-size: 16px;}
             }
-            @include respond-to(medium) {
-                .heroImg {
-                    width: 129%;
-                    right: -9%;
-                }
-            }
-            @include respond-to(small) {
-                .heroImg {
-                    width: 129%;
-                    right: -9%;
-                }
-            }
-            .heroImgfunsize {position: absolute; width: 180%; top: 0; left: -294px;}
-            .heroImgmicro {position: absolute; width: 100%; top: 0;}
-            .mainCTA {
-                color: white;
-                padding: 103px 0 221px;
-                .herocopy {font-weight: 800;}
-                .up {color: $accent;}
-                .upup {color: $accent;}
-                .details {padding: 9px 11px; display: block;}
-                &.spanish {
-                    @include respond-to(xsmall) {
-                        .u {font-size: 50px; line-height: 37px;}
-                        .up {font-size: 52px; line-height: 61px;}
-                        .upup {font-size: 61px; line-height: 54px;}
-                        .details {font-size: 14px; font-weight: 100;}
-                    }
-                    @include respond-to(small) {
-                        .u {font-size: 52px; line-height: 50px;}
-                        .up {font-size: 58px; line-height: 67px;}
-                        .upup {font-size: 73px; line-height: 52px;}
-                        .details {font-size: 12px; padding: 9px 0;}
-                    }
-                    @include respond-to(medium) {
-                        .u {font-size: 60px; line-height: 74px;}
-                        .up {font-size: 61px; line-height: 77px;}
-                        .upup {font-size: 75px; line-height: 75px;}
-                        .details {font-size: 12px; padding: 9px 0;}
-                    }
-                    @include respond-to(large) {
-                        .u {font-size: 80px; line-height: 74px;}
-                        .up {font-size: 82px; line-height: 98px;}
-                        .upup {font-size: 93px; line-height: 72px;}
-                        .details {font-size: 14px; font-weight: 100;}
-                    }
-                }
-            }
-            @include respond-to(xsmall) {
-                .mainCTA {
-                    padding: 135px 0 99px;
-                    .u {font-size: 50px; line-height: 36px;}
-                    .up {font-size: 57px; line-height: 53px;}
-                    .upup {font-size: 80px; line-height: 64px;}
-                    .details {font-size: 12px; font-weight: 100;}
-                    .mainCTAbtn {padding: 10px 20px; font-size: 13px;}
-                }
-            }
-            @include respond-to(small) {
-                .mainCTA {
-                    padding: 78px 0 172px;
-                    .u {font-size: 54px; line-height: 40px;}
-                    .up {font-size: 62px; line-height: 56px;}
-                    .upup {font-size: 86px; line-height: 71px;}
-                    .details {font-size: 13px; font-weight: 100;}
-                }
-            }
-            @include respond-to(medium) {
-                .mainCTA {
-                    padding: 103px 0 221px;
-                    .u {font-size: 62px; line-height: 60px;}
-                    .up {font-size: 71px; line-height: 61px;}
-                    .upup {font-size: 98px; line-height: 89px;}
-                    .details {font-size: 14px; font-weight: 100;}
-                }
-            }
-            @include respond-to(large) {
-                .mainCTA {
-                    .u {font-size: 80px; line-height: 74px;}
-                    .up {font-size: 92px; line-height: 77px;}
-                    .upup {font-size: 128px; line-height: 101px;}
-                    .details {font-size: 18px; font-weight: 100;}
-                    .mainCTAbtn {font-size: 18px;}
-                }
-            }
-            .stepsArrow1 {
-                position: absolute;
-                z-index: 2;
-                left: 85%;
-                top: -20%;
-            }
-            .stepsArrow2 {
-                position: absolute;
-                z-index: 1;
-                left: 85%;
-                top: -20%;
-            }
-            @include respond-to(small) {
-                .stepsArrow1, .stepsArrow2 {
-                    width: 73px;
-                    top: -33px;
-                }
-            };
-            .heroSteps {
-                background: white;
-                width: 100%;
-                display: block;
-                position: relative;
-                .steps {height: 258px;}
-                @include respond-to(small) {
-                    .steps {height: 167px;}
-                };
-                .heroStep {
-                    background: url('../assets/images/stepsBg.png') center no-repeat;
-                    background-size: 84%;
-                    position: relative;
-                    bottom: 166px;
-                    padding: 73px 73px;
-                    img {margin: 0 auto; position: relative; top: -10px;}
-                    .stepsTitle {font-size: 16px;}
-                    .stepsText {color: #999999;}
-                    &.ind {z-index: 2}
-                    &.ind2 {z-index: 1}
-                }
+        }
+        .hamburger {
+            .hamburgerTrain {color: $solid; font-size: 43px; padding: 6px 9px 0; display: inline-block;}
+            .applynow {
+                display: inline-block;
+                font-size: 23px;
+                padding: 17px 14px 0 0;
                 @include respond-to(xsmall) {
-                    .heroStep {
-                        bottom: 70px;
-                        background-size: 78%;
-                        width: 333px;
-                        margin: 0 auto;
-                        padding: 50px 73px;
-                    }
-                    .steps {height: 299px;}
-                }
-                @include respond-to(small) {
-                    .heroStep {
-                        padding: 73px 18px;
-                        background-size: 97%;
-                        bottom: 134px;
-                        img {width: 35%;}
-                    }
-                }
-                @include respond-to(medium) {
-                    .heroStep {background-size: 96%; padding: 73px 50px;}
-                }
-                @include respond-to(large) {
-                    .heroStep {padding: 73px 73px; background-size: 84%;}
+                    padding: 14px 2px 0 0!important;
                 }
             }
         }
-        .information {
+        &.funsize {
             background: white;
+            height: 75px;
             position: relative;
-            display: block;
-            width: 100%;
-            padding-bottom: 100px;
-            .infoSection {
-                .infoText {padding: 20px 50px;}
-                @include respond-to(medium) {
-                    .lgright {float:right;}
-                    .infoText {padding: 20px 0;}
-                }
-                @include respond-to(large) {
-                    .lgright {float:right;}
-                    .infoText {padding: 20px 0;}
-                }
-                p {color:#999;}
-                img {
-                    width: 78%;
-                    max-width: 356px;
-                    margin: 0 auto;
-                }
+            .logo img {
+                max-width: 95px;
+                @include trans(all 0.5s ease);
+                &:hover {max-width: 100px;}
+            }
+            .hamburger {
+                .hamburgerTrain {font-size: 32px;}
+                .applynow {font-size: 18px;  padding: 14px 14px 0 0;}
             }
         }
-        .testimonials {
-            display: block;
-            width: 100%;
-            position: relative;
-            color: white;
-            .testimones {
+        &.fixmenu {
+            background: white;
+            height: 80px;
+            .logo img {
+                max-width: 105px;
+                @include trans(all 0.5s ease);
+                &:hover {max-width: 109px;}
+            }
+            ul.util {
                 @include trans(all 0.5s ease);
             }
-            .testBg {
-                position: relative;
-                margin: 0 auto;
+            ul.menu {
+                margin-top: 16px;
+                @include trans(all 0.5s ease);
+            }
+            .hamburger {
+                .hamburgerTrain {font-size: 35px;}
+                .applynow {font-size: 18px;}
+            }
+        }
+    }
+    #body {
+        .droptop {padding-top: 93px;}
+        .dynamicPages {}
+        .staticPages {
+            .hero {
+                display: block;
                 width: 100%;
-                max-width: 1496px;
-            }
-            .testQuote {
-                position: absolute;
-            	left: 0;
-            	right: 0;
-            	margin-left: auto;
-             	margin-right: auto;
-            	max-width: 1096px;
-                .testBody {
-                    font-weight: 300;
-                    display: block;
-                }
-                .testAuthor {
-                    margin-bottom: 20px;
-                    display: block;
-                }
-                .vidLink {
-                    font-size: 65px;
-                    color: white;
-                    &:hover {color: $accent;}
-                }
-            }
-            @include respond-to(xsmall) {
-                .testBg {width: 250%; left: -225px;}
-                .testQuote {
-                    top: 10%;
-                    .testBody {font-size: 17px; padding: 0 60px;}
-                    .vidLink {font-size: 53px;}
-                }
-            }
-            @include respond-to(small) {
-                .testBg {width: 146%; left: -12%;}
-                .testQuote {
-                    top: 21%;
-                    .testBody {font-size: 17px; padding: 0 60px;}
-                }
-            }
-            @include respond-to(medium) {
-                .testBg {width: 250%; left: -185px;}
-                .testQuote {
-                    top: 21%;
-                    .testBody {font-size: 27px;}
-                }
-            }
-            @include respond-to(large) {
-                .testBg {width: 100%; left: 0;}
-                .testQuote {
-                    top: 21%;
-                    .testBody {font-size: 27px;}
-                }
-            }
-            .testCTA {
-                background: white;
+                overflow: hidden;
                 position: relative;
-                width: 100%;
-                color: #999;
-                padding: 80px 0;
-                .testAvatars {
-                    position: absolute;
+                .heroImg {
+                    position: fixed;
                     width: 100%;
-                    max-width: 500px;
-                    top: -53px;
-                    left: 0;
-                    right: 0;
-                    margin-left: auto;
-                    margin-right: auto;
-                    text-align: center;
-                    @include trans(all 0.5s ease);
-                    .imgoverlay {
-                        .overlay {
-                            background: rgba(255, 255, 255, 0.3);
-                            position: absolute;
-                            top: 2px;
-                            left: 7px;
-                            width: 86%;
-                            height: 95%;
-                            cursor: pointer;
-                            @include rad(34px);
-                        }
+                    top: 75px;
+                }
+                @include respond-to(large) {
+                    .heroImg {
+                        width: 110%!important;
+                        right: 0!important;
                     }
-                    .avatars {position: relative;}
-                    .avatar {
-                        width: 80px;
-                        cursor: pointer;
-                        &.active {width: 100px;}
+                }
+                @include respond-to(medium) {
+                    .heroImg {
+                        width: 129%;
+                        right: -9%;
                     }
-                    @include respond-to(xsmall) {
-                        .avatar {
-                            width: 60px;
-                            &.active {width: 80px;}
+                }
+                @include respond-to(small) {
+                    .heroImg {
+                        width: 129%;
+                        right: -9%;
+                    }
+                }
+                .heroImgfunsize {position: absolute; width: 180%; top: 0; left: -294px;}
+                .heroImgmicro {position: absolute; width: 100%; top: 0;}
+                .snapcta {
+                    color: white;
+                    padding: 103px 0 221px;
+                    font-weight: 800;
+                    .jumboHeader {font-weight: 800;}
+                    .line2, .line3 {color: $accent;}
+                    .line4 {
+                        padding: 9px 11px;
+                        display: block;
+                        .bullets {margin:0 24px;}
+                    }
+
+                }
+                @include respond-to(xsmall) {
+                    .snapcta {
+                        padding: 135px 0 99px;
+                        .line1 {font-size: 50px; line-height: 36px;}
+                        .line2 {font-size: 57px; line-height: 53px;}
+                        .line3 {font-size: 80px; line-height: 64px;}
+                        .line4 {font-size: 12px; font-weight: 100;}
+                        &.singleheader {padding: 71px 0 58px;}
+                        .jumboHeader {font-size: 43px;}
+                        .cta {padding: 10px 20px; font-size: 13px;}
+                        .merchcta {
+                            .line1 {font-size: 30px; line-height: 26px;}
+                            .line2 {font-size: 48px; line-height: 46px;}
+                            .line3 {font-size: 39px; line-height: 40px;}
+                            .line4 {font-size: 12px; font-weight: 100;}
                         }
-                        .imgoverlay {
-                            .overlay {
-                                top: 1px;
-                                left: 7px;
-                                width: 82%;
-                                height: 95%;
-                                @include rad(26px);
+                        &.spanish {
+                            .line1 {font-size: 50px; line-height: 36px;}
+                            .line2 {font-size: 57px; line-height: 53px;}
+                            .line3 {font-size: 80px; line-height: 64px;}
+                            .line4 {font-size: 12px; font-weight: 100;}
+                            .merchcta {
+                                .line1 {font-size: 50px; line-height: 36px;}
+                                .line2 {font-size: 57px; line-height: 53px;}
+                                .line3 {font-size: 80px; line-height: 64px;}
+                                .line4 {font-size: 12px; font-weight: 100;}
                             }
                         }
                     }
                 }
+                @include respond-to(small) {
+                    .snapcta {
+                        padding: 78px 0 172px;
+                        .line1 {font-size: 54px; line-height: 40px;}
+                        .line2 {font-size: 62px; line-height: 56px;}
+                        .line3 {font-size: 86px; line-height: 71px;}
+                        .line4 {font-size: 14px; font-weight: 100;}
+                        &.singleheader {padding: 116px 0 156px;}
+                        .jumboHeader {font-size: 52px;}
+                        .merchcta {
+                            .line1 {font-size: 40px; line-height: 49px;}
+                            .line2 {font-size: 62px; line-height: 56px;}
+                            .line3 {font-size: 48px; line-height: 61px;}
+                            .line4 {font-size: 13px; font-weight: 100;}
+                        }
+                        &.spanish {
+                            .line1 {font-size: 52px; line-height: 50px;}
+                            .line2 {font-size: 58px; line-height: 67px;}
+                            .line3 {font-size: 73px; line-height: 52px;}
+                            .line4 {font-size: 12px; padding: 9px 0;}
+                            .merchcta {
+                                .line1 {font-size: 52px; line-height: 50px;}
+                                .line2 {font-size: 58px; line-height: 67px;}
+                                .line3 {font-size: 48px; line-height: 52px;}
+                                .line4 {font-size: 13px; padding: 9px 0;}
+                            }
+                        }
+                    }
+                }
+                @include respond-to(medium) {
+                    .snapcta {
+                        padding: 103px 0 221px;
+                        .line1 {font-size: 62px; line-height: 60px;}
+                        .line2 {font-size: 71px; line-height: 61px;}
+                        .line3 {font-size: 98px; line-height: 89px;}
+                        .line4 {font-size: 14px; font-weight: 100;}
+                        &.singleheader {padding: 182px 0 228px;}
+                        .jumboHeader {font-size: 76px;}
+                        .merchcta {
+                            .line1 {font-size: 46px; line-height: 45px;}
+                            .line2 {font-size: 71px; line-height: 61px;}
+                            .line3 {font-size: 56px; line-height: 50px;}
+                            .line4 {font-size: 14px; font-weight: 100;}
+                        }
+                        &.spanish {
+                            .line1 {font-size: 60px; line-height: 74px;}
+                            .line2 {font-size: 61px; line-height: 98px;}
+                            .line3 {font-size: 75px; line-height: 72px;}
+                            .line4 {font-size: 12px; padding: 9px 0;}
+                            .merchcta {
+                                .line1 {font-size: 60px; line-height: 74px;}
+                                .line2 {font-size: 61px; line-height: 77px;}
+                                .line3 {font-size: 75px; line-height: 75px;}
+                                .line4 {font-size: 12px; padding: 9px 0;}
+                            }
+                        }
+                    }
+                }
+                @include respond-to(large) {
+                    .snapcta {
+                        .line1 {font-size: 80px; line-height: 74px;}
+                        .line2 {font-size: 92px; line-height: 77px;}
+                        .line3 {font-size: 128px; line-height: 101px;}
+                        .line4 {font-size: 18px; font-weight: 100;}
+                        .cta {font-size: 18px;}
+                        &.singleheader {padding: 182px 0 228px;}
+                        .jumboHeader {font-size: 76px;}
+                        .merchcta {
+                            .line1 {font-size: 60px; line-height: 65px;}
+                            .line2 {font-size: 92px; line-height: 77px;}
+                            .line3 {font-size: 71px; line-height: 70px;}
+                            .line4 {font-size: 18px; font-weight: 100;}
+                        }
+                        &.spanish {
+                            .line1 {font-size: 80px; line-height: 74px;}
+                            .line2 {font-size: 82px; line-height: 98px;}
+                            .line3 {font-size: 93px; line-height: 72px;}
+                            .line4 {font-size: 14px; font-weight: 100;}
+                            .merchcta {
+                                .line1 {font-size: 80px; line-height: 74px;}
+                                .line2 {font-size: 82px; line-height: 98px;}
+                                .line3 {font-size: 93px; line-height: 72px;}
+                                .line4 {font-size: 14px; font-weight: 100;}
+                            }
+                        }
+                    }
+                }
+                .stepsArrow1 {
+                    position: absolute;
+                    z-index: 2;
+                    left: 85%;
+                    top: -20%;
+                }
+                .stepsArrow2 {
+                    position: absolute;
+                    z-index: 1;
+                    left: 85%;
+                    top: -20%;
+                }
+                @include respond-to(small) {
+                    .stepsArrow1, .stepsArrow2 {
+                        width: 73px;
+                        top: -33px;
+                    }
+                };
+                .heroSteps {
+                    background: white;
+                    width: 100%;
+                    display: block;
+                    position: relative;
+                    .steps {height: 258px;}
+                    @include respond-to(small) {
+                        .steps {height: 167px;}
+                    };
+                    .heroStep {
+                        background: url('../assets/images/stepsBg.png') center no-repeat;
+                        background-size: 84%;
+                        position: relative;
+                        bottom: 166px;
+                        padding: 73px 73px;
+                        img {margin: 0 auto; position: relative; top: -10px;}
+                        .stepsTitle {font-size: 16px;}
+                        .stepsText {color: #999999;}
+                        &.ind {z-index: 2}
+                        &.ind2 {z-index: 1}
+                    }
+                    @include respond-to(xsmall) {
+                        .heroStep {
+                            bottom: 70px;
+                            background-size: 78%;
+                            width: 333px;
+                            margin: 0 auto;
+                            padding: 50px 73px;
+                        }
+                        .steps {height: 299px;}
+                    }
+                    @include respond-to(small) {
+                        .heroStep {
+                            padding: 73px 18px;
+                            background-size: 97%;
+                            bottom: 134px;
+                            img {width: 35%;}
+                        }
+                    }
+                    @include respond-to(medium) {
+                        .heroStep {background-size: 96%; padding: 73px 50px;}
+                    }
+                    @include respond-to(large) {
+                        .heroStep {padding: 73px 73px; background-size: 84%;}
+                    }
+                }
+            }
+            .information {
+                background: white;
+                position: relative;
+                display: block;
+                width: 100%;
+                padding-bottom: 100px;
+                &.howitworks {
+                    color: white;
+                    padding-bottom: 163px;
+                    .infoSection {
+                        &.pushdown {padding-top: 190px;}
+                        p {color: white}
+                    }
+                }
+                .infoSection {
+                    &.pushdown {padding-top: 100px;}
+                    .infoText {padding: 20px 50px;}
+                    .steps {color: $solid; font-size: 15px;}
+                    .vidLink {
+                        font-size: 65px;
+                        color: white;
+                        &:hover {color: $accent;}
+                    }
+                    @include respond-to(xsmall) {
+                        .vidLink {font-size: 53px;}
+                    }
+                    @include respond-to(medium) {
+                        .lgright {float:right;}
+                        .infoText {padding: 20px 0;}
+                    }
+                    @include respond-to(large) {
+                        .lgright {float:right;}
+                        .infoText {padding: 20px 0;}
+                    }
+                    p {color:#999;}
+                    img {
+                        width: 78%;
+                        max-width: 356px;
+                        margin: 0 auto;
+                        &.big {max-width: 407px;}
+                    }
+                }
+            }
+            .testimonials {
+                display: block;
+                width: 100%;
+                position: relative;
+                color: white;
+                .testimones {
+                    @include trans(all 0.5s ease);
+                }
+                .testBg {
+                    position: relative;
+                    margin: 0 auto;
+                    width: 100%;
+                    // max-width: 1446px;
+                }
+                .testQuote {
+                    position: absolute;
+                	left: 0;
+                	right: 0;
+                	margin-left: auto;
+                 	margin-right: auto;
+                	max-width: 1096px;
+                    .testBody {
+                        font-weight: 300;
+                        display: block;
+                    }
+                    .testAuthor {
+                        margin-bottom: 20px;
+                        display: block;
+                    }
+                    .vidLink {
+                        font-size: 65px;
+                        color: white;
+                        &:hover {color: $accent;}
+                    }
+                }
                 @include respond-to(xsmall) {
-                    .testAvatars {top: -40px;}
+                    .testBg {width: 250%; left: -225px;}
+                    .testQuote {
+                        top: 10%;
+                        .testBody {font-size: 17px; padding: 0 60px;}
+                        .vidLink {font-size: 53px;}
+                    }
+                }
+                @include respond-to(small) {
+                    .testBg {width: 146%; left: -12%;}
+                    .testQuote {
+                        top: 21%;
+                        .testBody {font-size: 17px; padding: 0 60px;}
+                    }
+                }
+                @include respond-to(medium) {
+                    .testBg {width: 150%; left: -185px;}
+                    .testQuote {
+                        top: 21%;
+                        .testBody {font-size: 27px;}
+                    }
+                }
+                @include respond-to(large) {
+                    .testBg {width: 100%; left: 0;}
+                    .testQuote {
+                        top: 21%;
+                        .testBody {font-size: 27px;}
+                    }
+                }
+                .testCTA {
+                    background: white;
+                    position: relative;
+                    width: 100%;
+                    color: #999;
+                    padding: 80px 0;
+                    .testAvatars {
+                        position: absolute;
+                        width: 100%;
+                        max-width: 500px;
+                        top: -53px;
+                        left: 0;
+                        right: 0;
+                        margin-left: auto;
+                        margin-right: auto;
+                        text-align: center;
+                        @include trans(all 0.5s ease);
+                        .imgoverlay {
+                            .overlay {
+                                background: rgba(255, 255, 255, 0.3);
+                                position: absolute;
+                                top: 2px;
+                                left: 7px;
+                                width: 86%;
+                                height: 95%;
+                                cursor: pointer;
+                                @include rad(34px);
+                            }
+                        }
+                        .avatars {position: relative;}
+                        .avatar {
+                            width: 80px;
+                            cursor: pointer;
+                            &.active {width: 100px;}
+                        }
+                        @include respond-to(xsmall) {
+                            .avatar {
+                                width: 60px;
+                                &.active {width: 80px;}
+                            }
+                            .imgoverlay {
+                                .overlay {
+                                    top: 1px;
+                                    left: 7px;
+                                    width: 82%;
+                                    height: 95%;
+                                    @include rad(26px);
+                                }
+                            }
+                        }
+                    }
+                    @include respond-to(xsmall) {
+                        .testAvatars {top: -40px;}
+                    }
+                }
+            }
+            .financetips {
+                background: #f1f1f1;
+                border-top: 1px solid #ddd;
+                padding: 70px 0;
+                .tipshead {
+                    h2 {font-weight: 300;}
+                }
+                .financetopics {
+                    background: white;
+                    padding: 25px;
+                    margin: 19px 5px;
+                    text-align: center;
+                    cursor: pointer;
+                    @include rad(8px);
+                    @include box-shadow(0, 0, 7px, rgba(0, 0, 0, 0.1));
+                    &:hover {@include box-shadow(0, 1px, 40px, rgba(0, 0, 0, 0.1));}
+                    h3 {font-weight: 300; color: lighten($solid, 10%);}
+                    .tipsicons {margin: 10px auto 0;}
+                    .topiccat {text-transform: uppercase; color: $dark; font-size: 16px; font-weight: 700}
+                }
+            }
+            .footerForm {
+                width: 100%;
+                margin: 0 auto;
+                display: block;
+                position: relative;
+                color: white;
+                &.location {background: white url('../assets/images/finderBackground.jpg') center no-repeat;}
+                &.newsletter {
+                    background: white url('../assets/images/signupnewsletter.jpg') center no-repeat;
+                    .formContainer {
+                        .form-control {margin: 0 5px;}
+                    }
+                }
+                @include respond-to(xsmall) {
+                    &.location {background-size: 312%;}
+                    &.newsletter {background-size: 448%; background-position: -405px;}
+                }
+                @include respond-to(small) {
+                    &.location {background-size: 193%;}
+                    &.newsletter {background-size: 213%; background-position: left;}
+                }
+                @include respond-to(medium) {
+                    &.location {background-size: 312%;}
+                    &.newsletter {background-size: 312%;}
+                }
+                @include respond-to(large) {
+                    &.location {background-size: 100%;}
+                    &.newsletter {background-size: 100%;}
+                }
+                .formContainer {
+                    padding: 137px 40px 172px;
+                    .hspace {margin-bottom: 40px;}
+                }
+            }
+            .badCredit {
+                background: white url('../assets/images/snapbackrep.jpg') repeat;
+                position: relative;
+                width: 100%;
+                display: block;
+                padding: 130px 0 110px;
+                h2 {line-height: 45px}
+                h4 {color: #999; line-height: 28px;}
+            }
+            .checksForm {
+                background: #f1f1f1;
+                position: relative;
+                width: 100%;
+                padding: 110px 0;
+                margin: 0 auto;
+                display: block;
+                h2 {line-height: 45px}
+                h4 {color: #999; line-height: 28px;}
+                .panel-body {
+                    padding: 26px 47px;
+                    h3 {color: $solid}
+                    .snapRequired {
+                        .checkbox {
+                            width: 25px;
+                            height: 25px;
+                            border: 2px solid #999;
+                            margin: 20px 0 0 10px;
+                            cursor: pointer;
+                            @include rad(3px);
+                            &.active {
+                                background: $solid url('../assets/images/check.png') center no-repeat;
+                                border: 2px solid $dark;
+                                &:hover {background: $dark url('../assets/images/check.png') center no-repeat;}
+                            }
+                            &:hover {
+                                background: #eee;
+                            }
+                        }
+                        .checktext span {
+                            font-size: 17px;
+                            padding: 20px 0;
+                            display: block;
+                            &.attention {color: #ab2121; font-weight: 700}
+                        }
+                    }
+                    @include respond-to(xsmall) {
+                        .snapRequired {
+                            .row {border-bottom: 1px solid #eee; &:last-child {border: 0}}
+                            .checkbox {
+                                margin: 34px auto 10px;
+                            }
+                            .checktext span {
+                                text-align: center;
+                                font-size: 17px;
+                                padding: 20px 0;
+                                display: block;
+                                &.attention {color: #ab2121; font-weight: 700}
+                            }
+                        }
+                    }
                 }
             }
         }
-        .locationFinder {
-            width: 100%;
-            max-width: 1496px;
-            margin: 0 auto;
-            display: block;
-            position: relative;
-            color: white;
-            background: white url('../assets/images/finderBackground.jpg') center no-repeat;
-            background-size: 100%;
-            .finderContainer {
-                padding: 106px 40px;
-                .hspace {margin-bottom: 40px;}
+        .blogContainer {
+            .bloglid {
+                background: url('../assets/images/bloglid.jpg') top center no-repeat;
+                background-size: 100%;
+                padding: 100px;
+                color: white;
+                margin-bottom: 80px;
+                h1 {font-size: 50px; font-weight: 300}
             }
-        }
-        @include respond-to(xsmall) {
-            .locationFinder {background-size: 312%;}
+            .published {color: #999}
+            .btn-blog {padding: 10px 15px;}
+            .filters {
+                .catagories {
+                    .badge {background: $accent;}
+                    &.active {
+                        background: $accent;
+                        border: 1px solid darken($accent, 5%);
+                        text-shadow: 1px 1px 2px #777;
+                        .badge {background: white; color: $accent; text-shadow: 0 0 2px #fff;}
+                    }
+                }
+            }
         }
     }
     #footer {
         background: white;
-        border-top: 1px solid #ddd;
         width: 100%;
         display: block;
         position: relative;
@@ -487,5 +687,71 @@ header {
                 }
             }
         }
+    }
+}
+#financeTips {
+    .financetips {
+        .tipsSocial {
+            border-top: 1px solid #ccc;
+            margin-top: 70px;
+            padding: 30px 0;
+            .socialTitle {text-align: right;}
+            .socialIcons {
+                a {
+                    color: $solid;
+                    font-size: 37px;
+                    &:hover {color: $accent;}
+                    i {margin: 16px 21px;}
+                }
+            }
+        }
+        @include respond-to(xsmall) {
+            .tipsSocial {.socialTitle, .socialIcons {text-align: center;}}
+        }
+    }
+    .tipsblog {
+        h3 {a {color: $solid;}}
+        .postBody {
+            height:80px;
+            font-size: 18px;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            color: #999;
+        }
+    }
+}
+
+.resp-utility {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99999;
+
+    .utilitybullet {
+        background: red;
+        color: white;
+        font-weight: 800;
+        padding: 10px 16px;
+        z-index: 999999999;
+        @include rad(100px);
+    }
+
+    .big {display: none}
+    .med {display: none}
+    .sma {display: none}
+    .xsm {display: none}
+
+    @include respond-to(xsmall) {
+        .xsm {display: block}
+    }
+    @include respond-to(small) {
+        .sma {display: block}
+    }
+    @include respond-to(medium) {
+        .med {display: block}
+    }
+    @include respond-to(large) {
+        .big {display: block}
+        .med {display: none}
     }
 }

@@ -39,7 +39,7 @@
                         if (post) {
                             state.name = 'post' + post + obj.language;
                             state.type = 'post';
-                            state.templateUrl = 'views/blog.post.html';
+                            state.templateUrl = 'views/dynamic/blog.post.html';
                             state.params = {
                                 pageId: post,
                                 language: obj.language
@@ -48,7 +48,7 @@
                         if (lndpg) {
                             state.name = 'lnd' + lndpg + obj.language;
                             state.type = 'lndPage';
-                            state.templateUrl = 'views/lndpage.html';
+                            state.templateUrl = 'views/dynamic/lndpage.html';
                             state.params = {
                                 pageId: lndpg,
                                 language: obj.language

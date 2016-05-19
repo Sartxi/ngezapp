@@ -1,0 +1,122 @@
+
+<div id="merchantsIsItRightPage" class="staticPages" ng-class="{'droptop':!funsize}">
+	<div id="hero" class="hero">
+		<div ng-hide="hideHero">
+			<img src="assets/images/is-snap-right-for-you.jpg" class="heroImg" ng-hide="funsize">
+			<img src="assets/images/is-snap-right-for-you.jpg" class="heroImgfunsize" ng-show="funsize && !micro">
+			<img src="assets/images/hero-micro.jpg" class="heroImgmicro" ng-show="micro">
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 text-center snapcta singleheader" ng-class="{'spanish': stateInfo.language === 'es'}">
+					<h1 class="jumboHeader">{{vm.content.block1}}</h1>
+					<br />
+					<button type="button" ui-sref="apply" class="btn btn-success cta">{{staticContent.ctat}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="merchantsIsItRightInformation" class="badCredit">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1 text-center">
+					<h2 ng-bind-html="vm.content.block2"></h2>
+					<br /><br />
+					<h4>{{vm.content.block3}}</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="merchantsIsItRightForm" class="checksForm">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="text-center">
+						<h2>{{vm.content.block4}}</h2><br />
+						<h4>{{vm.content.block5}}</h4><br /><br />
+					</div>
+				</div>
+				<div class="col-md-8 col-md-offset-2">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3>{{vm.content.block6}}</h3>
+							<br />
+							<form name="snapRequired" ng-submit="vm.submitChecks()" class="snapRequired">
+								<div class="row">
+									<div class="col-sm-1">
+										<div class="checkbox" ng-class="{active:vm.submit.age}" ng-click="vm.submit.age = !vm.submit.age"></div>
+									</div>
+									<div class="col-sm-11 checktext">
+										<span ng-class="{'attention':!vm.submit.age && vm.checkserror}">I am 18 years or older.</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-1">
+										<div class="checkbox" ng-class="{active:vm.submit.bank}" ng-click="vm.submit.bank = !vm.submit.bank"></div>
+									</div>
+									<div class="col-sm-11 checktext">
+										<span ng-class="{'attention':!vm.submit.bank && vm.checkserror}">I have a checking account, and it has been open for at least 90 days.</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-1">
+										<div class="checkbox" ng-class="{active:vm.submit.bankuse}" ng-click="vm.submit.bankuse = !vm.submit.bankuse"></div>
+									</div>
+									<div class="col-sm-11 checktext">
+										<span ng-class="{'attention':!vm.submit.bankuse && vm.checkserror}">In the last 30 days, my checking account has had at least five deposits or withdrawals with no non-sufficient-fund fees.</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-1">
+										<div class="checkbox" ng-class="{active:vm.submit.income}" ng-click="vm.submit.income = !vm.submit.income"></div>
+									</div>
+									<div class="col-sm-11 checktext">
+										<span ng-class="{'attention':!vm.submit.income && vm.checkserror}">I have had a steady source of income for the past six months.</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-1">
+										<div class="checkbox" ng-class="{active:vm.submit.incomelimit}" ng-click="vm.submit.incomelimit = !vm.submit.incomelimit"></div>
+									</div>
+									<div class="col-sm-11 checktext">
+										<span ng-class="{'attention':!vm.submit.incomelimit && vm.checkserror}">I currently make at least $1,000 of personal income per month.</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-1">
+										<div class="checkbox" ng-class="{active:vm.submit.checking}" ng-click="vm.submit.checking = !vm.submit.checking"></div>
+									</div>
+									<div class="col-sm-11 checktext">
+										<span ng-class="{'attention':!vm.submit.checking && vm.checkserror}">I deposit the majority of my income into my checking account.</span>
+									</div>
+								</div>
+								<div class="row text-center">
+									<div class="col-md-12">
+										<br /><br />
+										<button type="submit" class="btn btn-success btn-lg">{{staticContent.ctas}}</button>
+										<br /><br />
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="locationFinder" class="footerForm location">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 finderContainer text-center">
+					<h3 class="hspace">{{staticContent.sfsl}}</h3>
+					<form name="formContainer" ng-submit="vm.findLocation()">
+						<div class="form-group">
+							<input type="text" class="form-control input-lg text-center" placeholder="Zip Code" ng-model="findLocation.zipCode">
+							<button type="submit" class="btn btn-primary btn-lg btn-block">{{staticContent.sfsb}}</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

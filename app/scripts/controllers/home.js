@@ -18,12 +18,16 @@
         function init() {
             self.activeTestimonial = 0;
             getContent();
-            getTestimonials();
         }
 
         function getContent() {
             request.name = 'pages';
             request.getObject(pageId).then(function (res) {
+                if (res.name === 'Merchants') {
+                    getTestimonials(res.name);
+                } else {
+                    getTestimonials();
+                }
                 angular.forEach(res.content, function (obj) {
                     if (obj.language === language) {
                         self.content = obj;
@@ -35,8 +39,12 @@
             });
         }
 
-        function getTestimonials() {
-            request.name = 'testimonials';
+        function getTestimonials(nm) {
+            if (nm) {
+                request.name = 'merchTestimonials';
+            } else {
+                request.name = 'testimonials';
+            }
             request.getObjects().then(function (res) {
                 self.testimonials = res.data;
                 angular.forEach(self.testimonials, function (obj) {

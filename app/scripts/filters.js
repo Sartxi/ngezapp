@@ -8,6 +8,48 @@ angular.module('appFilters', [])
         };
     })
 
+    .filter('capitalize', function() {
+        return function(input) {
+          return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+        };
+    })
+
+    .filter('catfilter', function() {
+        return function (posts, selectedCat) {
+            if (!angular.isUndefined(posts) && !angular.isUndefined(selectedCat) && selectedCat.length > 0) {
+                var tempPosts = [];
+                angular.forEach(posts, function (post) {
+                    angular.forEach(post.catagories, function (p) {
+                        if (p.text === selectedCat && p.text !== null) {
+                            tempPosts.push(post);
+                        }
+                    });
+                });
+                return tempPosts;
+            } else {
+                return posts;
+            }
+        };
+    })
+
+    .filter('tagfilter', function() {
+        return function (posts, selectedCat) {
+            if (!angular.isUndefined(posts) && !angular.isUndefined(selectedCat) && selectedCat.length > 0) {
+                var tempPosts = [];
+                angular.forEach(posts, function (post) {
+                    angular.forEach(post.tags, function (p) {
+                        if (p.text === selectedCat && p.text !== null) {
+                            tempPosts.push(post);
+                        }
+                    });
+                });
+                return tempPosts;
+            } else {
+                return posts;
+            }
+        };
+    })
+
     // Telephone Formating
     .filter('telephone', function () {
         return function (tel) {
