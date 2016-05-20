@@ -1,12 +1,49 @@
-<div id="blogPost{{vm.content.id}}" class="droptop" ng-controller="PostCtrl as vm">
-    <div class="container">
+<div id="blogPost{{vm.content.id}}" class="droptop staticPages blogContainer" ng-controller="PostCtrl as vm">
+    <div loader class="appLoader" ng-show="vm.loading"></div>
+    <div class="bloglid post text-center">
+        <h1>{{vm.content.title}}</h1>
+    </div>
+    <div class="container blogPostContainer">
         <div class="row">
+            <div class="col-md-12 toolbox">
+                <div class="row">
+                    <div class="col-md-1">
+                        <button class="btn btn-default btn-sm" type="button" ui-sref="blog"><span class="glyphicon glyphicon-chevron-left"></span> {{staticContent.backBtn}}</button>
+                    </div>
+                    <div class="col-md-8 tools">
+                        <i class="fa fa-book"></i> <span ng-repeat="catagory in vm.content.catagories"><span class="tooltags">{{catagory.text | capitalize}}</span>{{$last ? '' : ($index==vm.content.catagories.length-2) ? ' and ' : ', '}}</span>
+                    </div>
+                    <div class="col-md-3 tools">
+                        <i class="fa fa-clock-o"></i> {{vm.content.post.publishDate | date: 'fullDate'}}
+                    </div>
+                </div>
+            </div>
             <div class="col-md-12">
-                <br />
-                <button class="btn btn-default btn-sm" type="button" ui-sref="blog"><span class="glyphicon glyphicon-chevron-left"></span> {{staticContent.backBtn}}</button>
+                <br /><br /><br />
+                <div class="postbody">
+                    <div ng-bind-html="vm.content.pageHtml"></div>
+                </div>
+                <br /><br />
+            </div>
+            <div class="col-md-12 toolbox">
+                <div class="tools">
+                    <i class="fa fa-tags"></i> <span ng-repeat="tag in vm.content.tags"><span class="tooltags">{{tag.text | capitalize}}</span>{{$last ? '' : ($index==vm.content.tags.length-2) ? ' and ' : ', '}}</span>
+                </div>
+                <br /><br />
+                <br /><br />
+            </div>
+            <div class="col-md-12">
+                <dir-disqus config="disqusConfig" ng-if="!vm.loading"></dir-disqus>
             </div>
         </div>
-        <h1>{{vm.content.title}}</h1>
-        <div ng-bind-html="vm.content.pageHtml"></div>
     </div>
+    <div id="relatedPosts{{vm.content.id}}" class="checksForm">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					fsdmodsmp
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

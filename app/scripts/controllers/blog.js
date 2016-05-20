@@ -10,17 +10,19 @@
      */
 
 
-    function BlogCtrl(request, $rootScope, PostFactory, $filter) {
+    function BlogCtrl(request, $rootScope, PostFactory, $filter, $state) {
         var self = this;
         var language = $rootScope.stateInfo.language;
 
         function init() {
+            self.loading = true;
             getPosts();
         }
 
         function getPosts() {
             request.name = 'blog';
             request.getObjects().then(function (res) {
+                self.loading = false;
                 self.posts = PostFactory.build(res.data, language);
                 getCatagories();
             }, function (err) {
@@ -72,17 +74,32 @@
             }
         };
 
+        self.readStory = function (post) {
+            var id = post.id;
+            $state.go('post' + id + language);
+        };
+
         init();
     }
 
-    function PostCtrl(request, $stateParams, $rootScope) {
+    function PostCtrl(request, $stateParams, $rootScope, $scope) {
         var self = this;
+        var scope = $scope;
 
         var pageId = $rootScope.stateInfo.pageId;
         var language = $rootScope.stateInfo.language;
 
         function init() {
+            self.loading = true;
             getContent();
+        }
+
+        function buildDisqus() {
+            scope.disqusConfig = {
+                disqus_shortname: 'financialfitnessblog',
+                disqus_identifier: self.content.title,
+                disqus_url: 'http://localhost:9001/' + self.content.url
+            };
         }
 
         function getContent() {
@@ -93,6 +110,8 @@
                         self.content = obj;
                     }
                 });
+                self.loading = false;
+                buildDisqus();
             }, function (err) {
                 console.log(err);
             });
@@ -103,6 +122,6 @@
 
 
     angular.module('ezapp')
-        .controller('BlogCtrl', ['request', '$rootScope', 'PostFactory', '$filter', BlogCtrl])
-        .controller('PostCtrl', ['request', '$stateParams', '$rootScope', PostCtrl]);
+        .controller('BlogCtrl', ['request', '$rootScope', 'PostFactory', '$filter', '$state', BlogCtrl])
+        .controller('PostCtrl', ['request', '$stateParams', '$rootScope', '$scope', PostCtrl]);
 })();

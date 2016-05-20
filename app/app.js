@@ -24,7 +24,8 @@ angular.module('ezapp', [
     'ui.bootstrap',
     'backand',
     'ngStorage',
-    'angular.filter'
+    'angular.filter',
+    'angularUtils.directives.dirDisqus'
 ])
 .config(['$stateProvider','$httpProvider', '$urlRouterProvider', 'BackandProvider', '$locationProvider',
     function($stateProvider, $httpProvider, $urlRouterProvider, BackandProvider, $locationProvider) {

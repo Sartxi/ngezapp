@@ -1,4 +1,5 @@
 @import 'strap';
+@import 'loader';
 
 #mobileMenu {
     a {color:white; text-transform: uppercase;}
@@ -626,6 +627,7 @@
             }
         }
         .blogContainer {
+            .blogPostContainer {padding-bottom: 100px;}
             .bloglid {
                 background: url('../assets/images/bloglid.jpg') top center no-repeat;
                 background-size: 100%;
@@ -633,17 +635,35 @@
                 color: white;
                 margin-bottom: 80px;
                 h1 {font-size: 50px; font-weight: 300}
+                &.post {
+                    padding: 50px;
+                    margin-bottom: 50px;
+                }
             }
             .published {color: #999}
             .btn-blog {padding: 10px 15px;}
+            .postbody {color: #999; font-size: 17px; padding: 12px 0 35px;}
+            .postTags {color: #999;}
+            .toolbox {
+                .tools {
+                    color: #777;
+                    padding-top: 5px;
+                    .tooltags {
+                        background: #eee;
+                        padding: 3px 9px;
+                        @include rad(5px);
+                    }
+                }
+            }
             .filters {
                 .catagories {
                     .badge {background: $accent;}
+                    .tooltags {margin-bottom: 4px; display: inline-block; &:hover {background: $accent; color: white; text-decoration: none;}}
                     &.active {
-                        background: $accent;
-                        border: 1px solid darken($accent, 5%);
-                        text-shadow: 1px 1px 2px #777;
-                        .badge {background: white; color: $accent; text-shadow: 0 0 2px #fff;}
+                        background: #ddd;
+                        border: 1px solid darken(#ddd, 10%);;
+                        color: #555;
+                        .badge {color: white;}
                     }
                 }
             }

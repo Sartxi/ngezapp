@@ -9,7 +9,7 @@
                 <div class="col-md-3 pull-right filters">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input type="text" ng-model="postFilter" placeholder="Find Blog Posts" class="form-control">
+                        <input type="text" ng-model="postFilter" placeholder="Find Blog Posts" class="form-control input-lg">
                     </div>
                     <br />
                     <div class="list-group">
@@ -23,11 +23,11 @@
                         <div class="list-group-item"><h4><i class="fa fa-tags"></i> Tags</h4></div>
                         <div class="list-group-item" ng-show="vm.selectedTag">
                             <a class="pull-right text-danger" ng-click="vm.selectedTag = ''"><i class="fa fa-times"></i></a>
-                            <span class="label label-success">{{vm.selectedTag | capitalize}}</span>
+                            <span>{{vm.selectedTag | capitalize}}</span>
                         </div>
-                        <div class="list-group-item">
-                            <span ng-repeat="tag in vm.tags" class="catagories">
-                                <a class="solidText" ng-click="vm.setTag(tag)">{{tag | capitalize}}</a>{{$last ? '' : ($index==vm.tags.length-2) ? ', ' : ', '}}
+                        <div class="list-group-item toolbox text-center">
+                            <span ng-repeat="tag in vm.tags" class="catagories tools">
+                                <a ng-click="vm.setTag(tag)" class="tooltags">{{tag | capitalize}}</a>
                             </span>
                         </div>
                     </div>
@@ -35,17 +35,17 @@
                 </div>
                 <div class="col-md-9">
                     <div class="row">
-                        <div dir-paginate="post in vm.posts | filter: postFilter | catfilter:vm.selectedCatagory | tagfilter:vm.selectedTag | itemsPerPage: 5 track by $index" class="col-md-12">
+                        <div ng-if="!vm.loading" dir-paginate="post in vm.posts | filter: postFilter | catfilter:vm.selectedCatagory | orderBy:'-publishDate' | tagfilter:vm.selectedTag | itemsPerPage: 5 track by $index" class="col-md-12">
                             <div class="row">
                                 <div class="col-md-12">
                                     <h2>{{post.name}}</h2>
                                 </div>
-                                <div class="col-md-12 postInfo">
+                                <div class="col-md-12 postInfo toolbox">
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 tools">
                                             <span><i class="fa fa-clock-o"></i> {{post.publishDate | date: 'fullDate'}}</span>
                                         </div>
-                                        <div class="col-md-7">
+                                        <div class="col-md-7 tools">
                                             <i class="fa fa-book"></i> Posted in:
                                             <span ng-repeat="catagory in post.catagories">
                                                 <a ng-click="vm.setCat(catagory.text)" class="accentText">{{catagory.text | capitalize}}</a>{{$last ? '' : ($index==post.catagories.length-2) ? ' and ' : ', '}}
@@ -55,17 +55,21 @@
                                 </div>
                                 <div class="col-md-12">
                                     <hr>
-                                    <div ng-bind-html="post.pageHtml | limitTo:400"></div>
+                                    <div class="postbody">
+                                        <div ng-bind-html="post.pageHtml | limitTo:400"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 postTags">
                                     <div class="center-block">
                                         <small>
-                                            <i class="fa fa-tags"></i> Tags:
+                                            <i class="fa fa-tags"></i>
                                             <span ng-repeat="tag in post.tags">
                                                 <a ng-click="vm.setTag(tag.text)" class="accentText">{{tag.text | capitalize}}</a>{{$last ? '' : ($index==post.tags.length-2) ? ' and ' : ', '}}
                                             </span>
                                         </small>
                                     </div>
                                     <br />
-                                    <button type="button" class="btn btn-success btn-blog" ui-sref="post{{post.id}}{{stateInfo.language}}">{{staticContent.readPost}}</button>
+                                    <button type="button" class="btn btn-success btn-blog" ng-click="vm.readStory(post)">{{staticContent.readPost}}</button>
                                     <br /><br /><br /><br /><br />
                                 </div>
                             </div>

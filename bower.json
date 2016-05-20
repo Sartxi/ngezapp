@@ -20,7 +20,8 @@
     "ngstorage": "~0.3.0",
     "es5-shim": "~4.1.0",
     "SHA-1": "~0.1.1",
-    "angularUtils-pagination": "angular-utils-pagination#^0.11.0"
+    "angularUtils-pagination": "angular-utils-pagination#^0.11.0",
+    "angularUtils-disqus": "angular-utils-disqus#^1.0.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.6"
