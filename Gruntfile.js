@@ -16,6 +16,9 @@ module.exports = function (grunt) {
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
+    require('prerender-node').set('prerenderToken', 'nwHIG52XkVIIWHyi6dVP');
+
+    // grunt.loadNpmTasks('grunt-html-snapshot');
     grunt.loadNpmTasks('grunt-relative-root');
 
     // Configurable paths for the application
@@ -428,6 +431,27 @@ module.exports = function (grunt) {
                'compass:dist',
                'svgmin'
             ]
+        },
+
+        htmlSnapshot: {
+            all: {
+                options: {
+                    snapshotPath: 'snapshots/',
+                    sitePath: 'http://localhost:9001/',
+                    msWaitForPages: 2000,
+                    sanitize: function (requestUri) {
+                        if (/\/$/.test(requestUri)) {
+                            return 'app/index.html';
+                        } else {
+                            return requestUri.replace(/\//g, 'prefix-');
+                        }
+                    },
+                    removeScripts: true,
+                    urls: [
+                        '#/merchants'
+                    ]
+                }
+            }
         },
 
         // Test settings

@@ -7,12 +7,14 @@
     "grunt-bower-install": "^1.6.0",
     "grunt-contrib-compress": "^0.13.0",
     "grunt-contrib-concat": "^0.5.1",
+    "grunt-html-snapshot": "^0.6.1",
     "grunt-ngmin": "0.0.3",
     "grunt-relative-root": "^0.2.2",
     "grunt-rev": "^0.1.0",
     "grunt-targethtml": "^0.2.6",
     "multer": "^1.1.0",
     "ng-annotate": "^0.15.4",
+    "prerender-node": "^2.2.2",
     "wiredep": "^2.2.2"
   },
   "devDependencies": {

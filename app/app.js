@@ -34,7 +34,7 @@ angular.module('ezapp', [
         $httpProvider.defaults.cache = true; //cache all requests
         $stateProviderRef = $stateProvider;
         $urlRouterProviderRef = $urlRouterProvider;
-        $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(false);
     }
 ])
 
